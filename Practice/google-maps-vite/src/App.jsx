@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 
 import { GoogleMap, LoadScript, Marker } from "@react-google-maps/api";
+import UserDirections from './UserDirections';
 
 
 const containerStyle = {
@@ -8,14 +9,8 @@ const containerStyle = {
   height: "400px",
 };
 
-
-
-
 function App() {
   const apiKey = import.meta.env.VITE_GOOGLE_MAPS_API_KEY
-
-
-
   const [userLocation, setUserLocation] = useState(null);
 
   const mapOptions = {
@@ -79,11 +74,14 @@ function App() {
   };
 
   return (
-    <LoadScript googleMapsApiKey={apiKey}>
-      <GoogleMap mapContainerStyle={containerStyle} center={userLocation} zoom={mapOptions.zoom} >
-        {userLocation && <Marker position={userLocation} />}
-      </GoogleMap>
-    </LoadScript>
+    <>
+      <LoadScript googleMapsApiKey={apiKey}>
+        <GoogleMap mapContainerStyle={containerStyle} center={userLocation} zoom={mapOptions.zoom} >
+          {userLocation && <Marker position={userLocation} />}
+        </GoogleMap>
+      </LoadScript>
+      <UserDirections loc={userLocation} />
+    </>
   );
 }
 
