@@ -1,13 +1,15 @@
 import os
 
-from dotenv import load_dotenv
+from dotenv import find_dotenv, load_dotenv
 from googlemaps import Client
 
 # Load environment variables from the .env file
-load_dotenv()
+load_dotenv(dotenv_path=find_dotenv())
+
+# /AutoMate/Practice/.env
 
 # Access the environment variables
-secret_key = os.getenv("GOOGLE_MAPS_API_KEY")
+secret_key = os.getenv("VITE_GOOGLE_MAPS_API_KEY")
 
 gmaps = Client(key=secret_key)
 

@@ -35,8 +35,7 @@ const UserDirections = (props) => {
 
     return (
         <>
-
-            <LoadScript googleMapsApiKey={import.meta.env.VITE_GOOGLE_MAPS_API_KEY}>
+            {/* <LoadScript googleMapsApiKey={import.meta.env.VITE_GOOGLE_MAPS_API_KEY}>
                 <GoogleMap
                     mapContainerStyle={mapContainerStyle}
                     center={origin || destination}
@@ -60,7 +59,7 @@ const UserDirections = (props) => {
                     )}
                     {distance && <p>Distance: {distance}</p>}
                 </GoogleMap>
-            </LoadScript>
+            </LoadScript> */}
 
 
         </>
