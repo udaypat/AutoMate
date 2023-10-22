@@ -7,6 +7,7 @@ import Login from './Login.jsx'
 import App from './App.jsx'
 import MyMapWithAutocomplete from './AutoComplete.jsx'
 
+import './index.css'
 
 
 const router = createBrowserRouter([

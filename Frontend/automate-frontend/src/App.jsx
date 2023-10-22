@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import { GoogleMap, LoadScript, Marker } from "@react-google-maps/api";
-
+import { Link } from 'react-router-dom';
 const containerStyle = {
   width: "400px",
   height: "400px",
@@ -78,6 +78,11 @@ function App() {
           {userLocation && <Marker position={userLocation} />}
         </GoogleMap>
       </LoadScript>
+      <Link to="/login">Login</Link>
+      <Link to="/register">Register</Link>
+      <h1 className="text-3xl font-sans underline">
+        Hello world!
+      </h1>
 
     </>
   );
