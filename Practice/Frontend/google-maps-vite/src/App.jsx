@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react'
 
 import { GoogleMap, LoadScript, Marker } from "@react-google-maps/api";
-import UserDirections from './UserDirections';
 
 
 const containerStyle = {
@@ -80,7 +79,6 @@ function App() {
           {userLocation && <Marker position={userLocation} />}
         </GoogleMap>
       </LoadScript>
-      <UserDirections loc={userLocation} />
     </>
   );
 }
