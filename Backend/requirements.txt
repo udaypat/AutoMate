@@ -1,3 +1,7 @@
-googlemaps
-python-dotenv
-flask
+bcrypt
+flake8
+Flask
+Flask-Cors
+Flask-JWT-Extended
+Flask-SQLAlchemy
+flask_marshmallow
