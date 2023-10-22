@@ -1,17 +1,23 @@
 # main.py
 
-from controllers import app as controllers
 from flask import Flask
-from models import db
+from flask_cors import CORS
+from flask_marshmallow import Marshmallow
+from flask_sqlalchemy import SQLAlchemy
 
 app = Flask(__name__)
 app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///automate.db"
-app.config["SQLALCHEMY_TRACK_MODIFICATIONS "] = False
 
 
-db.init_app(app)
+db = SQLAlchemy(app)
 
-app.register_blueprint(controllers)
+
+ma = Marshmallow(app)
+
+CORS(app)
+
+
+from controllers import *
 
 if __name__ == "__main__":
     with app.app_context():

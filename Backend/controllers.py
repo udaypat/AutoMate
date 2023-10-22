@@ -1,22 +1,13 @@
-from flask import Blueprint, jsonify, request
-
 import bcrypt
-
 from flask import jsonify, request
-
-from main import app, ma, cache
-from models import User, db
-
-
-app = Blueprint("controllers", __name__)
-
-
 from flask_jwt_extended import (
+    JWTManager,
     create_access_token,
     get_jwt_identity,
     jwt_required,
-    JWTManager,
 )
+from main import app, ma
+from models import User, db
 
 jwt = JWTManager(app)
 
@@ -55,13 +46,11 @@ def login():
 # Create User
 @app.post("/register")
 def register():
-
     # Getting data
     userdata = request.get_json()
     usr = User.query.filter_by(username=userdata["username"]).first()
     em = User.query.filter_by(email=userdata["email"]).first()
     pn = User.query.filter_by(phone=userdata["phone"]).first()
-
 
     if usr or em or pn:
         return jsonify("User already Exists")
@@ -73,12 +62,14 @@ def register():
     # commiting Data
     db.session.add(
         User(
-            username=userdata["username"], email=userdata["email"], phone=userdata["phone"], password=hashed_pass
+            username=userdata["username"],
+            email=userdata["email"],
+            phone=userdata["phone"],
+            password=hashed_pass,
         ),
     )
     db.session.commit()
     return jsonify("Success")
-
 
 
 @app.route("/")
