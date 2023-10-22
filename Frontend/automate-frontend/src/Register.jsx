@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import axios from 'axios';
 
 function Register() {
     const [formData, setFormData] = useState({
@@ -14,9 +15,14 @@ function Register() {
         setFormData({ ...formData, [name]: value });
     };
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        // Handle form submission, e.g., send data to the server
+        try {
+            const response = await axios.post("http://127.0.0.1:5000/register", formData);
+            console.log('Response:', response.data);
+        } catch (error) {
+            console.error('Error:', error);
+        }
     };
 
     return (

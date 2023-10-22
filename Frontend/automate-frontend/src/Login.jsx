@@ -1,5 +1,5 @@
-// Login.js
 import { useState } from 'react';
+import axios from 'axios';
 
 function Login() {
     const [email, setEmail] = useState('');
@@ -8,9 +8,15 @@ function Login() {
     const handleEmailChange = (e) => setEmail(e.target.value);
     const handlePasswordChange = (e) => setPassword(e.target.value);
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        // Handle login form submission, e.g., send data to the server
+        try {
+            const data = { email, password };
+            const response = await axios.post("http://127.0.0.1:5000/login", data);
+            console.log('Response:', response.data);
+        } catch (error) {
+            console.error('Error:', error);
+        }
     };
 
     return (
