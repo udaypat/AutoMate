@@ -19,6 +19,7 @@ function Register() {
         e.preventDefault();
         try {
             const response = await axios.post("http://127.0.0.1:5000/register", formData);
+
             console.log('Response:', response.data);
         } catch (error) {
             console.error('Error:', error);

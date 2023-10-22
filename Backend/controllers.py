@@ -36,7 +36,6 @@ def login():
         return jsonify({"msg": "Invalid Email"})
     elif bcrypt.checkpw(password, curr_user.password):
         # Creating JWT token
-        cache.clear()
         access_token = create_access_token(identity=curr_user.id)
         return jsonify(access_token=access_token)
     else:
@@ -46,6 +45,7 @@ def login():
 # Create User
 @app.post("/register")
 def register():
+    # return jsonify(request.get_json())
     # Getting data
     userdata = request.get_json()
     usr = User.query.filter_by(username=userdata["username"]).first()
@@ -65,6 +65,7 @@ def register():
             username=userdata["username"],
             email=userdata["email"],
             phone=userdata["phone"],
+            age=userdata["age"],
             password=hashed_pass,
         ),
     )
@@ -74,4 +75,4 @@ def register():
 
 @app.route("/")
 def index():
-    return "Welcome to the Automate App"
+    return "I love you sm"

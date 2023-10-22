@@ -1,4 +1,5 @@
 # AutoMate
 
-
-AIzaSyDkGNFruQqakgT_on4HEhdbLStuLvEAd3E
+To run venv
+cd to backend
+.\venv\Scripts\activate
