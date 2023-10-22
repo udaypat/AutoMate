@@ -17,8 +17,8 @@ function Login() {
         <div>
             <h2>Login</h2>
             <form onSubmit={handleSubmit}>
-                <input type="email" placeholder="Email" value={email} onChange={handleEmailChange} />
-                <input type="password" placeholder="Password" value={password} onChange={handlePasswordChange} />
+                <input type="email" name="email" placeholder="Email" value={email} onChange={handleEmailChange} />
+                <input type="password" name="password" placeholder="Password" value={password} onChange={handlePasswordChange} />
                 <button type="submit">Login</button>
             </form>
         </div>
