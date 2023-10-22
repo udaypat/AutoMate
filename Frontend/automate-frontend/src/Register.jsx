@@ -23,7 +23,7 @@ function Register() {
         <div>
             <h2>Register</h2>
             <form onSubmit={handleSubmit}>
-                <input type="text" name="name" placeholder="Name" onChange={handleInputChange} />
+                <input type="text" name="username" placeholder="Username" onChange={handleInputChange} />
                 <input type="tel" name="phone" placeholder="Phone" onChange={handleInputChange} />
                 <input type="email" name="email" placeholder="Email" onChange={handleInputChange} />
                 <input type="number" name="age" placeholder="Age" onChange={handleInputChange} />
