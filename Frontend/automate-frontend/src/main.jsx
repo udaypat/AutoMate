@@ -7,11 +7,12 @@ import MyMapWithAutocomplete from './AutoComplete.jsx'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <>
-    {/* <App /> */}
+    <App />
     <MyMapWithAutocomplete />
     <h1>banana 🍌</h1>
 
   </>
 )
+
 
 
