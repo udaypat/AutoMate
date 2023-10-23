@@ -5,10 +5,10 @@ import { createBrowserRouter, RouterProvider, } from "react-router-dom";
 import Register from './Register.jsx'
 import Login from './Login.jsx'
 import App from './App.jsx'
+import EditProfile from './EditProfile.jsx'
 import MyMapWithAutocomplete from './AutoComplete.jsx'
 
 import './index.css'
-
 
 const router = createBrowserRouter([
   {
@@ -22,6 +22,10 @@ const router = createBrowserRouter([
   {
     path: "/",
     element: <App />,
+  },
+  {
+    path: "/profile",
+    element: <EditProfile />,
   },
   {
     path: "/autocomplete",

@@ -5,9 +5,9 @@ import { Button } from "@/components/ui/button"
 
 import DemoCreateAccount from './Signin';
 import AuthenticationPage from './Landing';
-
-
+import Login from './Login'
 import Navbar from './NavBar';
+
 const containerStyle = {
   width: "400px",
   height: "400px",
@@ -15,7 +15,13 @@ const containerStyle = {
 
 function App() {
   const apiKey = import.meta.env.VITE_GOOGLE_MAPS_API_KEY
+
+  // const isLoggedIn = true;
+
   const [userLocation, setUserLocation] = useState(null);
+  const [isLoggedIn, setLoggedIn] = useState(false);
+
+
   console.log(apiKey);
   const mapOptions = {
     zoom: 15,
@@ -77,10 +83,14 @@ function App() {
     }
   };
 
+  console.log(isLoggedIn);
 
   return (
     <>
-      <Navbar />
+      <Navbar isLoggedIn={isLoggedIn} />
+
+      <Login setlogin={setLoggedIn} />
+
       {/* <LoadScript googleMapsApiKey={apiKey}>
         <GoogleMap mapContainerStyle={containerStyle} center={userLocation} zoom={mapOptions.zoom} >
           {userLocation && <Marker position={userLocation} />}
