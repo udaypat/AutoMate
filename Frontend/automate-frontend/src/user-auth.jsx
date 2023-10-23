@@ -12,11 +12,13 @@ import {
     SelectTrigger,
     SelectValue,
 } from "@/components/ui/select"
+import { useNavigate } from "react-router-dom";
 
 import { Label } from "@/components/ui/label";
 
 // eslint-disable-next-line react/prop-types
 export function UserAuthForm({ className, ...props }) {
+    const navigate = useNavigate();
 
     const [formData, setFormData] = useState({
         email: "",
@@ -31,13 +33,17 @@ export function UserAuthForm({ className, ...props }) {
     async function onSubmit(event) {
         event.preventDefault();
         console.log(formData);
-        // try {
-        //     const response = await axios.post("http://127.0.0.1:5000/register", formData);
 
-        //     console.log('Response:', response.data);
-        // } catch (error) {
-        //     console.error('Error:', error);
-        // }
+        try {
+            const response = await axios.post("http://127.0.0.1:5000/register", formData);
+
+            console.log('Response:', response.data);
+            navigate("/home");
+
+        } catch (error) {
+            console.error('Error:', error);
+        }
+
     }
 
     // Define a function to handle input changes
