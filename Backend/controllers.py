@@ -45,14 +45,11 @@ def login():
 # Create User
 @app.post("/register")
 def register():
-    # return jsonify(request.get_json())
-    # Getting data
     userdata = request.get_json()
     usr = User.query.filter_by(username=userdata["username"]).first()
     em = User.query.filter_by(email=userdata["email"]).first()
-    pn = User.query.filter_by(phone=userdata["phone"]).first()
 
-    if usr or em or pn:
+    if usr or em:
         return jsonify("User already Exists")
     password = userdata["password"].encode()
 
@@ -63,14 +60,33 @@ def register():
     db.session.add(
         User(
             username=userdata["username"],
-            email=userdata["email"],
-            phone=userdata["phone"],
             age=userdata["age"],
+            gender=userdata["gender"],
+            pgender=userdata["pgender"],
+            pagegrp=userdata["pagegrp"],
+            email=userdata["email"],
             password=hashed_pass,
-        ),
+        )
     )
     db.session.commit()
     return jsonify("Success")
+
+
+# # Edit Profile
+# @app.put("/edit_profile/<int:id>")
+# # @jwt_required()
+# def edit_profile(id):
+#     current_userid = get_jwt_identity()
+#     user = User.query.filter_by(current_userid).first()
+#     data = request.get_json()
+#     user.gender = data["gender"]
+#     user.username = data["username"]
+#     user.age = data["age"]
+#     user.pagegrp = data["pagegrp"]
+#     user.pgender = data["pgender"]
+
+#     db.session.commit()
+#     return jsonify(data)
 
 
 @app.route("/")

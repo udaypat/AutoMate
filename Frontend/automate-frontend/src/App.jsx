@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import { GoogleMap, LoadScript, Marker } from "@react-google-maps/api";
 import { Link } from 'react-router-dom';
+import Navbar from './NavBar';
 const containerStyle = {
   width: "400px",
   height: "400px",
@@ -73,6 +74,7 @@ function App() {
 
   return (
     <>
+      <Navbar />
       <LoadScript googleMapsApiKey={apiKey}>
         <GoogleMap mapContainerStyle={containerStyle} center={userLocation} zoom={mapOptions.zoom} >
           {userLocation && <Marker position={userLocation} />}

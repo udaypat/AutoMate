@@ -1,5 +1,3 @@
-# main.py
-
 from datetime import timedelta
 
 from flask import Flask
