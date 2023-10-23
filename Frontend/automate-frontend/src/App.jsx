@@ -1,6 +1,12 @@
 import { useEffect, useState } from 'react'
 import { GoogleMap, LoadScript, Marker } from "@react-google-maps/api";
 import { Link } from 'react-router-dom';
+import { Button } from "@/components/ui/button"
+
+import DemoCreateAccount from './Signin';
+import AuthenticationPage from './Landing';
+
+
 import Navbar from './NavBar';
 const containerStyle = {
   width: "400px",
@@ -75,7 +81,7 @@ function App() {
   return (
     <>
       <Navbar />
-      <LoadScript googleMapsApiKey={apiKey}>
+      {/* <LoadScript googleMapsApiKey={apiKey}>
         <GoogleMap mapContainerStyle={containerStyle} center={userLocation} zoom={mapOptions.zoom} >
           {userLocation && <Marker position={userLocation} />}
         </GoogleMap>
@@ -85,7 +91,9 @@ function App() {
       <h1 className="text-3xl font-sans underline">
         Hello world!
       </h1>
-
+      <Button>Click me</Button> */}
+      {/* <DemoCreateAccount /> */}
+      <AuthenticationPage />
     </>
   );
 }
