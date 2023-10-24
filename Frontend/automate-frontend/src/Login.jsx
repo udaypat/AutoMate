@@ -21,7 +21,7 @@ import {
 } from "@/components/ui/alert"
 import axios from "axios"
 
-export default function SiginIn() {
+export default function Login() {
     const navigate = useNavigate();
 
     const [error, setError] = useState(false)

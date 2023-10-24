@@ -3,7 +3,7 @@ import { GoogleMap, LoadScript, Marker } from "@react-google-maps/api";
 import { Link } from 'react-router-dom';
 import { Button } from "@/components/ui/button"
 
-import SiginIn from './Signin';
+import Login from './Login';
 import Landing from './Landing';
 // import Login from './extra_pages/Login'
 import Navbar from './components/NavBar';
@@ -96,7 +96,7 @@ function App() {
 
   return (
     <>
-      <Navbar setUser={setUser} />
+      <Navbar setUser={setUser} user={user} />
       {/* {user} */}
       {user ? <Dashboard /> : <Landing />}
 

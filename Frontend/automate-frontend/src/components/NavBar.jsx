@@ -44,18 +44,18 @@ import { Link } from 'react-router-dom'
 import { navigationMenuTriggerStyle } from "./ui/navigation-menu"
 import { useNavigate } from "react-router-dom";
 
-// impport Link
+// import Link
 
 
 
 
-function NavBar({ setUser }) {
+function NavBar(props) {
     const navigate = useNavigate();
 
     const logout = () => {
         console.log('clicked logout');
         localStorage.clear();
-        setUser(null)
+        props.setUser(null)
         navigate("/");
 
     }
@@ -64,27 +64,41 @@ function NavBar({ setUser }) {
     return (
         <NavigationMenu>
             <NavigationMenuList>
-                <NavigationMenuItem>
-                    <Link to="/" className={navigationMenuTriggerStyle()}>
+                {props.user ? (
+                    <>
+                        <NavigationMenuItem>
+                            <Link to="/" className={navigationMenuTriggerStyle()}>
 
-                        Home
+                                Home
 
-                    </Link>
-                </NavigationMenuItem>
-                <NavigationMenuItem>
-                    <Link to="/profile" className={navigationMenuTriggerStyle()}>
+                            </Link>
+                        </NavigationMenuItem>
+                        <NavigationMenuItem>
+                            <Link to="/profile" className={navigationMenuTriggerStyle()}>
 
-                        Profile
+                                Profile
 
-                    </Link>
-                </NavigationMenuItem>
-                <NavigationMenuItem>
+                            </Link>
+                        </NavigationMenuItem>
+                        <NavigationMenuItem>
 
-                    <NavigationMenuLink className={navigationMenuTriggerStyle()} onClick={logout}>
-                        Logout
-                    </NavigationMenuLink>
+                            <NavigationMenuLink className={navigationMenuTriggerStyle()} onClick={logout}>
+                                Logout
+                            </NavigationMenuLink>
 
-                </NavigationMenuItem>
+                        </NavigationMenuItem>
+                    </>
+                ) : (
+                    <>
+                        <NavigationMenuItem>
+                            <Link to="/login" className={navigationMenuTriggerStyle()}>
+
+                                Login
+
+                            </Link>
+                        </NavigationMenuItem>
+                    </>
+                )}
             </NavigationMenuList>
         </NavigationMenu >
 
