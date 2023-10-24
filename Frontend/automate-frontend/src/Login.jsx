@@ -1,4 +1,5 @@
 import { Button } from "@/components/ui/button"
+// import Navbar from './components/NavBar';
 import {
     Card,
     CardContent,
@@ -80,7 +81,7 @@ export default function Login() {
     return (
 
         <>
-
+            {/* <Navbar setUser={setUser} user={user} /> */}
             <Card>
                 <CardHeader className="space-y-1">
                     <CardTitle className="text-2xl">Login to your account</CardTitle>

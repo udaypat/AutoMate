@@ -100,9 +100,6 @@ function App() {
       {/* {user} */}
       {user ? <Dashboard /> : <Landing />}
 
-
-
-
       {/* <SiginIn /> */}
 
       {/* <LoadScript googleMapsApiKey={apiKey}>

@@ -9,7 +9,7 @@ import Landing from "./Landing.jsx";
 
 import App from './App.jsx'
 import EditProfile from './EditProfile.jsx'
-import MyMapWithAutocomplete from './AutoComplete.jsx'
+// import MyMapWithAutocomplete from './AutoComplete.jsx'
 
 import './index.css'
 
@@ -31,10 +31,10 @@ const router = createBrowserRouter([
     path: "/profile",
     element: <EditProfile />,
   },
-  {
-    path: "/autocomplete",
-    element: <MyMapWithAutocomplete />
-  },
+  // {
+  //   path: "/autocomplete",
+  //   element: <MyMapWithAutocomplete />
+  // },
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")).render(

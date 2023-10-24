@@ -8,8 +8,9 @@ import { Link } from 'react-router-dom';
 // import Login from '../Login'
 // import Navbar from './NavBar';
 
+import MyMapWithAutocomplete from '@/MyMapWithAutocomplete';
 const containerStyle = {
-    width: "400px",
+    width: "1500px",
     height: "400px",
 };
 
@@ -86,9 +87,10 @@ function Dashboard() {
     return (
         <>
 
-            <LoadScript googleMapsApiKey={apiKey}>
+            <LoadScript googleMapsApiKey={apiKey} libraries={["places"]}>
                 <GoogleMap mapContainerStyle={containerStyle} center={userLocation} zoom={mapOptions.zoom} >
                     {userLocation && <Marker position={userLocation} />}
+                    <MyMapWithAutocomplete />
                 </GoogleMap>
             </LoadScript>
 
