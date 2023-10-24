@@ -2,13 +2,20 @@ import { cn } from "@/lib/utils"
 import { Link } from 'react-router-dom';
 import { buttonVariants } from "@/components/ui/button"
 import { RegisterForm } from "@/components/RegisterForm"
-
+// import Image from "next/image"
 
 
 export default function Landing() {
     return (
         <>
-
+            {/* <div className="md:hidden">
+                <Image
+                    src="./bg.png"
+                    width={1280}
+                    height={843}
+                    alt="Authentication"
+                />
+            </div> */}
             <div className="container relative flex-col items-center justify-center md:grid lg:max-w-none lg:grid-cols-2 lg:px-0">
                 {/* <Link
                     to="/login"
@@ -40,15 +47,13 @@ export default function Landing() {
                     <div className="relative z-20 mt-auto">
                         <blockquote className="space-y-2">
                             <p className="text-lg">
-                                &ldquo;This library has saved me countless hours of work and
-                                helped me deliver stunning designs to my clients faster than
-                                ever before.&rdquo;
+                                &ldquo;Baby Shark, doo-doo, doo-doo, doo-doo.&rdquo;
                             </p>
-                            <footer className="text-sm">Sofia Davis</footer>
+                            <footer className="text-sm">Larry</footer>
                         </blockquote>
                     </div>
                 </div>
-                <div className="lg:p-7">
+                <div className="lg:p-3">
                     <div className="mx-auto flex w-full flex-col justify-center space-y-6 sm:w-[350px]">
                         <div className="flex flex-col space-y-2 text-center">
                             <h1 className="text-2xl font-semibold tracking-tight">

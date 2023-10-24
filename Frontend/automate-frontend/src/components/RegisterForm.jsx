@@ -24,9 +24,9 @@ export function RegisterForm({ className, ...props }) {
         email: "",
         username: "",
         age: "",
-        gender: "Male",
-        pgender: "Male",
-        pagegrp: "18-25",
+        gender: "",
+        pgender: "",
+        pagegrp: "",
         password: "",
     });
     console.log(formData)
@@ -84,18 +84,34 @@ export function RegisterForm({ className, ...props }) {
                             type="text"
                             value={formData.username}
                             onChange={handleInputChange}
-
                         />
                     </div>
                     <div className="grid gap-1">
                         <Label htmlFor="gender">Gender</Label>
+                        <select style={{
+                            border: '1px solid #ccc',
+                            boxShadow: '0 1px 1px #B7C9E2',
+                            borderRadius: '4px',
+                            padding: '8px',
+                            width: '100%',
+                        }}
+                            id="gender"
+                            name="gender"
+                            value={formData.gender}
+                            onChange={handleInputChange}>
+                            <option value="Male">Male</option>
+                            <option value="Female">Female</option>
+                            <option value="Other">Other</option>
+                            <option value="Do not wish to disclose">Do not wish to disclose</option>
+                        </select>
+                        {/* <Label htmlFor="gender">Gender</Label>
                         <Input
                             id="gender"
                             name="gender"
                             type="text"
                             value={formData.gender}
                             onChange={handleInputChange}
-                        />
+                        /> */}
                         {/* <Label htmlFor="gender">Gender</Label>
                         <Select id="gender"
                             name="gender"
@@ -127,18 +143,26 @@ export function RegisterForm({ className, ...props }) {
                         />
                     </div>
                     <div className="grid gap-1">
-                        <Label htmlFor="preferred-gender">Preferred Gender</Label>
+                        <Label htmlFor="pgender">Preferred Gender</Label>
                         <select
-                            id="preferred-gender"
-                            name="preferredGender"
+                            style={{
+                                border: '1px solid #ccc',
+                                boxShadow: '0 1px 1px #B7C9E2',
+                                borderRadius: '4px',
+                                padding: '8px',
+                                width: '100%',
+                            }}
+                            id="pgender"
+                            name="pgender"
                             value={formData.pgender}
                             onChange={handleInputChange}>
-                            <option value="male">Male</option>
-                            <option value="female">Female</option>
+                            <option value="Male">Male</option>
+                            <option value="Female">Female</option>
+                            <option value="NA">Anyone works!</option>
                         </select>
-                        {/* <Label htmlFor="preferred-gender">Preferred Gender for the Ride</Label>
-                        <Select id="preferred-gender"
-                            name="preferredGender"
+                        {/* <Label htmlFor="pgender">Preferred Gender for the Ride</Label>
+                        <Select id="pgender"
+                            name="pgender"
                             onChange={handleInputChange}>
                             <SelectTrigger>
                                 <SelectValue placeholder="Gender" />
@@ -153,21 +177,28 @@ export function RegisterForm({ className, ...props }) {
                         </Select> */}
                     </div>
                     <div className="grid gap-1">
-                        <Label htmlFor="preferred-age">Preferred Age</Label>
+                        <Label htmlFor="pagegrp">Preferred Age</Label>
                         <select
-                            id="preferred-age"
-                            name="preferredAge"
+                            id="pagegrp"
+                            name="pagegrp"
                             value={formData.pagegrp}
                             onChange={handleInputChange}
+                            style={{
+                                border: '1px solid #ccc',
+                                boxShadow: '0 1px 1px #B7C9E2',
+                                borderRadius: '4px',
+                                padding: '8px',
+                                width: '100%',
+                            }}
                         >
                             <option value="0">18-25</option>
                             <option value="1">25-30</option>
                             <option value="2">30-45</option>
                             <option value="3">45+</option>
                         </select>
-                        {/* <Label htmlFor="preferred-age">Preferred Age for the Ride</Label>
-                        <Select id="preferred-age"
-                            name="preferredAge"
+                        {/* <Label htmlFor="page">Preferred Age for the Ride</Label>
+                        <Select id="page"
+                            name="page"
                             onChange={handleInputChange}>
                             <SelectTrigger>
                                 <SelectValue placeholder="Age" />

@@ -45,19 +45,13 @@ export default function Login() {
             localStorage.setItem('user', response.data.access_token)
             setError(false)
             navigate("/");
-
-
-
-
         } catch (error) {
             console.log(error.response)
             setError(true)
             setErrorMsg(error.response.data.msg)
             setUser({});
             localStorage.clear();
-
         }
-
     }
 
     useEffect(() => {

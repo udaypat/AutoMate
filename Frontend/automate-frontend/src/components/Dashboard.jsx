@@ -10,7 +10,7 @@ import { Link } from 'react-router-dom';
 
 import MyMapWithAutocomplete from '@/MyMapWithAutocomplete';
 const containerStyle = {
-    width: "1500px",
+    width: "100%",
     height: "400px",
 };
 
@@ -93,6 +93,8 @@ function Dashboard() {
                     <MyMapWithAutocomplete />
                 </GoogleMap>
             </LoadScript>
+
+
 
         </>
     );
