@@ -4,7 +4,7 @@ import { GoogleMap, LoadScript, Autocomplete } from '@react-google-maps/api';
 
 const mapContainerStyle = {
     height: "400px",
-    width: "1400px"
+    width: "1500px"
 }
 
 const center = {
@@ -23,6 +23,8 @@ function MyMapWithAutocomplete() {
     const onPlaceChanged = () => {
         if (autocompleteRef.current !== null) {
             console.log(autocompleteRef.current.getPlace());
+            console.log(autocompleteRef.current.getPlace().geometry.location.lat());
+            console.log(autocompleteRef.current.getPlace().geometry.location.lng());
         } else {
             console.log('Autocomplete is not loaded yet!');
         }
@@ -36,7 +38,7 @@ function MyMapWithAutocomplete() {
         >
             <input
                 type="text"
-                placeholder="Customize your placeholder"
+                placeholder="Enter Destination"
                 style={{
                     boxSizing: `border-box`,
                     border: `1px solid transparent`,
