@@ -92,12 +92,12 @@ function App() {
     }
   };
 
-  console.log('in app', isLoggedIn);
+  console.log('in app', user);
 
   return (
     <>
-      <Navbar isLoggedIn={isLoggedIn} />
-
+      <Navbar setUser={setUser} />
+      {/* {user} */}
       {user ? <Dashboard /> : <Landing />}
 
 

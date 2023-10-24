@@ -42,14 +42,25 @@ import {
 } from "./ui/navigation-menu"
 import { Link } from 'react-router-dom'
 import { navigationMenuTriggerStyle } from "./ui/navigation-menu"
+import { useNavigate } from "react-router-dom";
+
 // impport Link
 
-const logout = () => {
-    console.log('clicked logout');
-}
 
 
-function NavBar() {
+
+function NavBar({ setUser }) {
+    const navigate = useNavigate();
+
+    const logout = () => {
+        console.log('clicked logout');
+        localStorage.clear();
+        setUser(null)
+        navigate("/");
+
+    }
+
+
     return (
         <NavigationMenu>
             <NavigationMenuList>
