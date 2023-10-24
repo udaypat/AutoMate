@@ -44,30 +44,35 @@ import { Link } from 'react-router-dom'
 import { navigationMenuTriggerStyle } from "./ui/navigation-menu"
 // impport Link
 
+const logout = () => {
+    console.log('clicked logout');
+}
+
+
 function NavBar() {
     return (
         <NavigationMenu>
             <NavigationMenuList>
                 <NavigationMenuItem>
-                    <Link to="/" legacyBehavior passHref>
-                        <NavigationMenuLink className={navigationMenuTriggerStyle()}>
-                            Home
-                        </NavigationMenuLink>
+                    <Link to="/" className={navigationMenuTriggerStyle()}>
+
+                        Home
+
                     </Link>
                 </NavigationMenuItem>
                 <NavigationMenuItem>
-                    <Link to="/profile" legacyBehavior passHref>
-                        <NavigationMenuLink className={navigationMenuTriggerStyle()}>
-                            Profile
-                        </NavigationMenuLink>
+                    <Link to="/profile" className={navigationMenuTriggerStyle()}>
+
+                        Profile
+
                     </Link>
                 </NavigationMenuItem>
                 <NavigationMenuItem>
-                    <Link to="/logout" legacyBehavior passHref>
-                        <NavigationMenuLink className={navigationMenuTriggerStyle()}>
-                            Logout
-                        </NavigationMenuLink>
-                    </Link>
+
+                    <NavigationMenuLink className={navigationMenuTriggerStyle()} onClick={logout}>
+                        Logout
+                    </NavigationMenuLink>
+
                 </NavigationMenuItem>
             </NavigationMenuList>
         </NavigationMenu >
