@@ -5,7 +5,7 @@ import axios from 'axios';
 
 const mapContainerStyle = {
     height: "400px",
-    width: "1400px"
+    width: "1500px"
 }
 
 const center = {
@@ -48,7 +48,7 @@ function MyMapWithAutocomplete() {
         >
             <input
                 type="text"
-                placeholder="Customize your placeholder"
+                placeholder="Enter Destination"
                 style={{
                     boxSizing: `border-box`,
                     border: `1px solid transparent`,

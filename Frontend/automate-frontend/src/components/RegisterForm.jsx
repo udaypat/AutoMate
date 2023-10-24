@@ -3,15 +3,15 @@ import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import axios from 'axios';
-// import {
-//     Select,
-//     SelectContent,
-//     SelectGroup,
-//     SelectItem,
-//     SelectLabel,
-//     SelectTrigger,
-//     SelectValue,
-// } from "@/components/ui/select"
+import {
+    Select,
+    SelectContent,
+    SelectGroup,
+    SelectItem,
+    SelectLabel,
+    SelectTrigger,
+    SelectValue,
+} from "@/components/ui/select"
 import { useNavigate } from "react-router-dom";
 
 import { Label } from "@/components/ui/label";
@@ -24,11 +24,12 @@ export function RegisterForm({ className, ...props }) {
         email: "",
         username: "",
         age: "",
-        gender: "",
-        pgender: "male",
-        pagegrp: "0",
+        gender: "Male",
+        pgender: "Male",
+        pagegrp: "18-25",
         password: "",
     });
+    console.log(formData)
 
     async function onSubmit(event) {
         event.preventDefault();
@@ -53,6 +54,7 @@ export function RegisterForm({ className, ...props }) {
             ...formData,
             [name]: value,
         });
+        console.log(event.target);
     }
 
     return (
@@ -93,11 +95,28 @@ export function RegisterForm({ className, ...props }) {
                             type="text"
                             value={formData.gender}
                             onChange={handleInputChange}
-
                         />
+                        {/* <Label htmlFor="gender">Gender</Label>
+                        <Select id="gender"
+                            name="gender"
+                            onChange={handleInputChange}
+                            value={formData.gender}>
+                            <SelectTrigger>
+                                <SelectValue placeholder="Gender" />
+                            </SelectTrigger>
+                            <SelectContent>
+                                <SelectGroup>
+                                    <SelectLabel>Gender</SelectLabel>
+                                    <SelectItem value="Male">Male</SelectItem>
+                                    <SelectItem value="Female">Female</SelectItem>
+                                    <SelectItem value="Other">Other</SelectItem>
+                                    <SelectItem value="Do not wish to Disclose">Do not wish to Disclose</SelectItem>
+                                </SelectGroup>
+                            </SelectContent>
+                        </Select> */}
                     </div>
                     <div className="grid gap-1">
-                        <Label htmlFor="gender">Age</Label>
+                        <Label htmlFor="age">Age</Label>
                         <Input
                             id="age"
                             name="age"
@@ -113,12 +132,25 @@ export function RegisterForm({ className, ...props }) {
                             id="preferred-gender"
                             name="preferredGender"
                             value={formData.pgender}
-                            onChange={handleInputChange}
-
-                        >
+                            onChange={handleInputChange}>
                             <option value="male">Male</option>
                             <option value="female">Female</option>
                         </select>
+                        {/* <Label htmlFor="preferred-gender">Preferred Gender for the Ride</Label>
+                        <Select id="preferred-gender"
+                            name="preferredGender"
+                            onChange={handleInputChange}>
+                            <SelectTrigger>
+                                <SelectValue placeholder="Gender" />
+                            </SelectTrigger>
+                            <SelectContent>
+                                <SelectGroup>
+                                    <SelectLabel>Preferred Gender</SelectLabel>
+                                    <SelectItem value="Male">Male</SelectItem>
+                                    <SelectItem value="Female">Female</SelectItem>
+                                </SelectGroup>
+                            </SelectContent>
+                        </Select> */}
                     </div>
                     <div className="grid gap-1">
                         <Label htmlFor="preferred-age">Preferred Age</Label>
@@ -127,13 +159,29 @@ export function RegisterForm({ className, ...props }) {
                             name="preferredAge"
                             value={formData.pagegrp}
                             onChange={handleInputChange}
-
                         >
                             <option value="0">18-25</option>
                             <option value="1">25-30</option>
                             <option value="2">30-45</option>
                             <option value="3">45+</option>
                         </select>
+                        {/* <Label htmlFor="preferred-age">Preferred Age for the Ride</Label>
+                        <Select id="preferred-age"
+                            name="preferredAge"
+                            onChange={handleInputChange}>
+                            <SelectTrigger>
+                                <SelectValue placeholder="Age" />
+                            </SelectTrigger>
+                            <SelectContent>
+                                <SelectGroup>
+                                    <SelectLabel>Preferred Age Group</SelectLabel>
+                                    <SelectItem value="0">18-25</SelectItem>
+                                    <SelectItem value="1">25-30</SelectItem>
+                                    <SelectItem value="2">30-45</SelectItem>
+                                    <SelectItem value="3">45+</SelectItem>
+                                </SelectGroup>
+                            </SelectContent>
+                        </Select> */}
                     </div>
                     <div className="grid gap-1">
                         <Label htmlFor="password">Password</Label>
@@ -147,7 +195,10 @@ export function RegisterForm({ className, ...props }) {
                         />
                     </div>
                 </div>
-                <Button type="submit">Submit</Button>
+                <br />
+                <div className="grid gap-1">
+                    <Button type="submit">Submit</Button>
+                </div>
             </form>
         </div>
     );
