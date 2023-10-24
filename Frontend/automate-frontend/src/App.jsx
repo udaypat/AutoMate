@@ -3,10 +3,12 @@ import { GoogleMap, LoadScript, Marker } from "@react-google-maps/api";
 import { Link } from 'react-router-dom';
 import { Button } from "@/components/ui/button"
 
-import DemoCreateAccount from './Signin';
-import AuthenticationPage from './Landing';
-import Login from './Login'
-import Navbar from './NavBar';
+import SiginIn from './Signin';
+import Landing from './Landing';
+// import Login from './extra_pages/Login'
+import Navbar from './components/NavBar';
+
+import Dashboard from './components/Dashboard';
 
 const containerStyle = {
   width: "400px",
@@ -16,13 +18,12 @@ const containerStyle = {
 function App() {
   const apiKey = import.meta.env.VITE_GOOGLE_MAPS_API_KEY
 
-  // const isLoggedIn = true;
 
   const [userLocation, setUserLocation] = useState(null);
+  const [user, setUser] = useState()
   const [isLoggedIn, setLoggedIn] = useState(false);
 
 
-  console.log(apiKey);
   const mapOptions = {
     zoom: 15,
   };
@@ -67,6 +68,14 @@ function App() {
     }
   }, [locationPermission]);
 
+  useEffect(() => {
+    const loggedInUser = localStorage.getItem("user");
+    if (loggedInUser) {
+      // const foundUser = JSON.parse(loggedInUser);
+      setUser(loggedInUser);
+    }
+  }, []);
+
   const checkLocationPermission = async () => {
     try {
       const { state } = await navigator.permissions.query({ name: 'geolocation' });
@@ -83,27 +92,28 @@ function App() {
     }
   };
 
-  console.log(isLoggedIn);
+  console.log('in app', isLoggedIn);
 
   return (
     <>
-      <Navbar isLoggedIn={isLoggedIn} />
 
-      <Login setlogin={setLoggedIn} />
+
+      {user ? <Dashboard /> : <Landing />}
+
+
+      {/* <Navbar isLoggedIn={isLoggedIn} /> */}
+
+      {/* <SiginIn /> */}
 
       {/* <LoadScript googleMapsApiKey={apiKey}>
         <GoogleMap mapContainerStyle={containerStyle} center={userLocation} zoom={mapOptions.zoom} >
           {userLocation && <Marker position={userLocation} />}
         </GoogleMap>
-      </LoadScript>
-      <Link to="/login">Login</Link>
-      <Link to="/register">Register</Link>
-      <h1 className="text-3xl font-sans underline">
-        Hello world!
-      </h1>
-      <Button>Click me</Button> */}
+      </LoadScript> */}
+
+
       {/* <DemoCreateAccount /> */}
-      <AuthenticationPage />
+
     </>
   );
 }

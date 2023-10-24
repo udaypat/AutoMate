@@ -2,22 +2,27 @@ import * as React from "react";
 import * as ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider, } from "react-router-dom";
 
-import Register from './Register.jsx'
-import Login from './Login.jsx'
+// import Register from './extra_pages/Register.jsx'
+// import Login from "./extra_pages/Login.jsx";
+import SiginIn from "./Signin.jsx";
+
+import Landing from "./Landing.jsx";
+
 import App from './App.jsx'
 import EditProfile from './EditProfile.jsx'
 import MyMapWithAutocomplete from './AutoComplete.jsx'
 
 import './index.css'
 
+
 const router = createBrowserRouter([
   {
     path: "/login",
-    element: <Login />,
+    element: <SiginIn />,
   },
   {
     path: "/register",
-    element: <Register />,
+    element: <Landing />,
   },
   {
     path: "/",

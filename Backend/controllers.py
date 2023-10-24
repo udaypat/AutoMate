@@ -33,13 +33,13 @@ def login():
 
     # checking creds
     if curr_user is None:
-        return jsonify({"msg": "Invalid Email"})
+        return jsonify({"msg": "Invalid Email"}), 401
     elif bcrypt.checkpw(password, curr_user.password):
         # Creating JWT token
         access_token = create_access_token(identity=curr_user.id)
         return jsonify(access_token=access_token)
     else:
-        return jsonify({"msg": "Bad password"})
+        return jsonify({"msg": "Bad password"}), 401
 
 
 # Create User

@@ -1,25 +1,18 @@
-// import { Metadata } from "next"
-// import Image from "next/image"
-// import Link from "next/link"
-
 import { cn } from "@/lib/utils"
 import { Link } from 'react-router-dom';
 
 import { buttonVariants } from "@/components/ui/button"
-import { UserAuthForm } from "@/user-auth"
+import { RegisterForm } from "@/components/RegisterForm"
 
-export const metadata = {
-    title: "Authentication",
-    description: "Authentication forms built using the components.",
-}
 
-export default function AuthenticationPage() {
+
+export default function Landing() {
     return (
         <>
 
             <div className="container relative  h-[800px] flex-col items-center justify-center md:grid lg:max-w-none lg:grid-cols-2 lg:px-0">
                 <Link
-                    to="/examples/authentication"
+                    to="/login"
                     className={cn(
                         buttonVariants({ variant: "ghost" }),
                         "absolute right-4 top-4 md:right-8 md:top-8"
@@ -66,7 +59,7 @@ export default function AuthenticationPage() {
                                 Enter your email below to create your account
                             </p>
                         </div>
-                        <UserAuthForm />
+                        <RegisterForm />
 
                     </div>
                 </div>

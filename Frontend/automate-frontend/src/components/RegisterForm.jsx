@@ -3,21 +3,21 @@ import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import axios from 'axios';
-import {
-    Select,
-    SelectContent,
-    SelectGroup,
-    SelectItem,
-    SelectLabel,
-    SelectTrigger,
-    SelectValue,
-} from "@/components/ui/select"
+// import {
+//     Select,
+//     SelectContent,
+//     SelectGroup,
+//     SelectItem,
+//     SelectLabel,
+//     SelectTrigger,
+//     SelectValue,
+// } from "@/components/ui/select"
 import { useNavigate } from "react-router-dom";
 
 import { Label } from "@/components/ui/label";
 
 // eslint-disable-next-line react/prop-types
-export function UserAuthForm({ className, ...props }) {
+export function RegisterForm({ className, ...props }) {
     const navigate = useNavigate();
 
     const [formData, setFormData] = useState({
@@ -38,7 +38,7 @@ export function UserAuthForm({ className, ...props }) {
             const response = await axios.post("http://127.0.0.1:5000/register", formData);
 
             console.log('Response:', response.data);
-            navigate("/home");
+            navigate("/login");
 
         } catch (error) {
             console.error('Error:', error);
