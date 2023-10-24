@@ -96,12 +96,12 @@ function App() {
 
   return (
     <>
-
+      <Navbar isLoggedIn={isLoggedIn} />
 
       {user ? <Dashboard /> : <Landing />}
 
 
-      {/* <Navbar isLoggedIn={isLoggedIn} /> */}
+
 
       {/* <SiginIn /> */}
 
