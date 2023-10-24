@@ -1,4 +1,7 @@
+import os
+
 import bcrypt
+from dotenv import find_dotenv, load_dotenv
 from flask import jsonify, request
 from flask_jwt_extended import (
     JWTManager,
@@ -6,13 +9,21 @@ from flask_jwt_extended import (
     get_jwt_identity,
     jwt_required,
 )
+from googlemaps import Client
 from main import app, ma
 from models import User, db
+
+load_dotenv(dotenv_path=find_dotenv())
 
 jwt = JWTManager(app)
 
 
 salt = bcrypt.gensalt()
+
+# Access the environment variables
+secret_key = os.getenv("VITE_GOOGLE_MAPS_API_KEY")
+
+gmaps = Client(key=secret_key)
 
 
 # Auto generate Schema using models
@@ -87,6 +98,16 @@ def register():
 
 #     db.session.commit()
 #     return jsonify(data)
+
+
+@app.post("/route")
+def generate_route():
+    users = request.get_json()
+    waypoint = users["waypoint"]
+    destination = users["destination"]
+    maps_link = f"https://www.google.com/maps/dir/My+Location/{waypoint['lat']},{waypoint['lng']}/{destination['lat']},{destination['lng']} "
+
+    return maps_link
 
 
 @app.route("/")
