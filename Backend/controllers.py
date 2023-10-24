@@ -61,7 +61,7 @@ def register():
     em = User.query.filter_by(email=userdata["email"]).first()
 
     if usr or em:
-        return jsonify("User already Exists")
+        return jsonify("User already Exists"), 412
     password = userdata["password"].encode()
 
     # Hashing Password
@@ -100,11 +100,18 @@ def register():
 #     return jsonify(data)
 
 
+@app.post("/destination")
+def destination():
+    autocomplete_data = request.get_json()
+    coordinates = autocomplete_data["geometry"]["location"]
+    return coordinates
+
+
 @app.post("/route")
 def generate_route():
-    users = request.get_json()
-    waypoint = users["waypoint"]
-    destination = users["destination"]
+    locations = request.get_json()
+    waypoint = locations["waypoint"]
+    destination = locations["destination"]
     maps_link = f"https://www.google.com/maps/dir/My+Location/{waypoint['lat']},{waypoint['lng']}/{destination['lat']},{destination['lng']} "
 
     return maps_link

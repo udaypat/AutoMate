@@ -1,6 +1,7 @@
 
 import { useRef } from 'react';
 import { GoogleMap, LoadScript, Autocomplete } from '@react-google-maps/api';
+import axios from 'axios';
 
 const mapContainerStyle = {
     height: "400px",
@@ -20,9 +21,20 @@ function MyMapWithAutocomplete() {
         autocompleteRef.current = autocomplete;
     }
 
-    const onPlaceChanged = () => {
+    const onPlaceChanged = async () => {
         if (autocompleteRef.current !== null) {
-            console.log(autocompleteRef.current.getPlace());
+            // console.log(autocompleteRef.current.getPlace());
+            // console.log(autocompleteRef.current.getPlace().geometry.location.lng());
+
+            try {
+
+                const response = await axios.post("http://127.0.0.1:5000/destination", autocompleteRef.current.getPlace());
+
+                console.log('Response:', response.data);
+
+            } catch (error) {
+                console.error('Error:', error);
+            }
         } else {
             console.log('Autocomplete is not loaded yet!');
         }
