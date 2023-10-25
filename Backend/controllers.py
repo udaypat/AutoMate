@@ -151,7 +151,7 @@ def search():
 # Compares curr user with all other users in the search queue and matchs with nearest one
 @app.get("/match")
 @jwt_required()
-def distance():
+def match():
     global searching_users
     # print(searching_users)
     # print(len(searching_users))
@@ -187,17 +187,32 @@ def distance():
                     distance_text = "N/A"
             else:
                 distance_text = "N/A"
-            response_data = {
-                "user_id": user_id,
-                "destination": destination,
-                "distance": distance_text,
-                "loc": currentloc,
-            }
-            destinations.append(response_data)
+
+            if (
+                distance_text < 500
+                and destination == searching_users[current_userid]["dest"]
+            ):
+                response_data = {
+                    "user_id": user_id,
+                    "destination": destination,
+                    "distance": distance_text,
+                    "loc": currentloc,
+                }
+                destinations.append(response_data)
+
+            # response_data = {
+            #     "user_id": user_id,
+            #     "destination": destination,
+            #     "distance": distance_text,
+            #     "loc": currentloc,
+            # }
+            # destinations.append(response_data)
+
+    print(len(destinations), destinations)
+    if len(destinations) == 0:
+        return jsonify("No user near you!"), 400
 
     destinations = sorted(destinations, key=lambda x: x["distance"])
-
-    print(destinations)
 
     global matched_users
 
@@ -300,7 +315,7 @@ def origin_accepted():
 # Checks if both user accepted
 @app.get("/consent")
 @jwt_required()
-def match():
+def consent():
     current_userid = get_jwt_identity()
 
     try:

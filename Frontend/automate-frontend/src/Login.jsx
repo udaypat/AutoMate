@@ -123,7 +123,7 @@ export default function Login() {
                                                 </div>
                                                 <div className="pt-1 mb-4">
                                                     <button className="btn btn-dark btn-lg" type="submit" form="myform" style={{ backgroundColor: '#296E73' }}>Login</button>
-                                                    <p className="mt-2 " style={{ color: '#393f81' }}>Don't have an account?
+                                                    <p className="mt-2 " style={{ color: '#393f81' }}>Do not have an account?
                                                         <Link to="/" style={{ color: '#393f81' }}>
 
                                                             Register
