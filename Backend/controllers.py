@@ -119,8 +119,9 @@ def register():
 @app.post("/destination")
 def destination():
     autocomplete_data = request.get_json()
-    coordinates = autocomplete_data["geometry"]["location"]
-    return coordinates
+    # coordinates = autocomplete_data["geometry"]["location"]
+    name = autocomplete_data["name"]
+    return name
 
 
 @app.post("/route")
@@ -128,7 +129,8 @@ def generate_route():
     locations = request.get_json()
     waypoint = locations["waypoint"]
     destination = locations["destination"]
-    maps_link = f"https://www.google.com/maps/dir/My+Location/{waypoint['lat']},{waypoint['lng']}/{destination['lat']},{destination['lng']} "
+    # maps_link = f"https://www.google.com/maps/dir/My+Location/{waypoint['lat']},{waypoint['lng']}/{destination['lat']},{destination['lng']} "
+    maps_link = f"https://www.google.com/maps/dir/My+Location/{waypoint['lat']},{waypoint['lng']}/{destination}"
 
     return maps_link
 
@@ -187,9 +189,9 @@ def match():
                     distance_text = "N/A"
             else:
                 distance_text = "N/A"
-
+            print(distance_text)
             if (
-                distance_text < 500
+                distance_text < 50000
                 and destination == searching_users[current_userid]["dest"]
             ):
                 response_data = {
@@ -301,7 +303,7 @@ def origin_accepted():
 
         return matched_users
     except:  # noqa
-        return "no user is matched with current user."
+        return "no user is matched with current user.", 401
 
     # Iterate through the list and update the "accepted" value to True if the ID matches
     # for pair in matched_users:
@@ -327,9 +329,9 @@ def consent():
         ):
             return "both accepted"
         else:
-            return "both did not accepted"
+            return "both did not accepted", 401
     except:  # noqa
-        return "no user is matched with current user."
+        return "no user is matched with current user.", 401
 
 
 @app.get("/id")

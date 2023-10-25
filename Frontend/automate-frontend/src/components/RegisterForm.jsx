@@ -13,8 +13,8 @@ import {
     SelectValue,
 } from "@/components/ui/select"
 import { useNavigate } from "react-router-dom";
-
 import { Label } from "@/components/ui/label";
+import { Link } from 'react-router-dom'
 
 // eslint-disable-next-line react/prop-types
 export function RegisterForm({ className, ...props }) {
@@ -59,8 +59,8 @@ export function RegisterForm({ className, ...props }) {
 
     return (
         <>
-            <form id="myForm" onSubmit={onSubmit}>
-                <div className="form-outline mb-4">
+            <form id="myForm" onSubmit={onSubmit} >
+                <div className="form-outline mb-3">
                     <label className="form-label" htmlFor="email">
                         Email
                     </label>
@@ -78,7 +78,7 @@ export function RegisterForm({ className, ...props }) {
                     />
                 </div>
 
-                <div className="form-outline mb-4">
+                <div className="form-outline mb-3">
                     <label className="form-label" htmlFor="username">
                         Username
                     </label>
@@ -92,7 +92,7 @@ export function RegisterForm({ className, ...props }) {
                     />
                 </div>
 
-                <div className="row mb-4">
+                <div className="row mb-3">
                     <div className="col">
                         <div className="form-outline">
                             <label className="form-label" htmlFor="gender">
@@ -130,7 +130,7 @@ export function RegisterForm({ className, ...props }) {
                 </div>
 
 
-                <div className="row mb-4">
+                <div className="row mb-3">
                     <div className="col">
                         <div className="form-outline">
                             <label className="form-label" htmlFor="pgender">
@@ -183,9 +183,15 @@ export function RegisterForm({ className, ...props }) {
                         onChange={handleInputChange}
                     />
                 </div>
-                <button type="submit" form='myForm' style={{ backgroundColor: '#296E73' }} className="btn btn-primary btn-block mb-4">
+                <button type="submit" form='myForm' style={{ backgroundColor: '#296E73' }} className="btn btn-primary btn-block">
                     Submit
                 </button>
+                <p className="mt-2 " style={{ color: '#393f81' }}>Already have an account?
+                    <Link to="/login" style={{ color: '#393f81' }}>
+
+                        Login
+
+                    </Link></p>
             </form>
 
         </>

@@ -90,12 +90,9 @@ function Dashboard() {
             <LoadScript googleMapsApiKey={apiKey} libraries={["places"]}>
                 <GoogleMap mapContainerStyle={containerStyle} center={userLocation} zoom={mapOptions.zoom} >
                     {userLocation && <Marker position={userLocation} />}
-                    <MyMapWithAutocomplete />
+                    <MyMapWithAutocomplete userLocation={userLocation} />
                 </GoogleMap>
             </LoadScript>
-
-
-
         </>
     );
 }

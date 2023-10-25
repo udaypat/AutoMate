@@ -62,93 +62,87 @@ function NavBar(props) {
 
     }
 
+    return (
+        <>
+            {props.user ? ( // If props.user is defined, show the navigation for a logged-in user
+                <nav className="navbar navbar-expand-lg navbar-light bg-light p-2">
+                    <Link to="#" className="nav-link navbar-brand p-1">
+                        AutoMate
+                    </Link>
+                    <ul className="nav justify-content-end ml-auto">
+                        <li className="nav-item">
+                            <Link to="/" className="nav-link" style={{ color: "black" }}>
+                                Home
+                            </Link>
+                        </li>
+                        <li className="nav-item">
+                            <Link to="/profile" className="nav-link" style={{ color: "black" }}>
+                                Profile
+                            </Link>
+                        </li>
+                        <li className="nav-item">
+                            <Link to="/" className="nav-link" onClick={logout} style={{ color: "black" }}>
+                                Logout
+                            </Link>
+                        </li>
+                    </ul>
+                </nav>
+            ) : ( // If props.user is not defined, you can add login links here
+                <>
+                    {/* 
+                    <li className="nav-item">
+                        <Link to="/login" className="nav-link">
+                            Login
+                        </Link>
+                    */}
+                </>
+            )}
+        </>
+    );
+
+
     // return (
-    //     <nav className="navbar navbar-expand-lg navbar-light bg-light">
-    //         <a className="navbar-brand p-1" href="#">AutoMate</a>
-    //         <ul className="nav justify-content-end ml-auto">
+    //     <NavigationMenu>
+    //         <NavigationMenuList>
     //             {props.user ? (
     //                 <>
-    //                     <li className="nav-item">
-    //                         <Link to="/" className="nav-link">
+    //                     <NavigationMenuItem>
+    //                         <Link to="/" className={navigationMenuTriggerStyle()}>
 
     //                             Home
 
     //                         </Link>
-    //                     </li>
-    //                     <li className="nav-item">
-    //                         <Link to="/profile" className="nav-link">
+    //                     </NavigationMenuItem>
+    //                     <NavigationMenuItem>
+    //                         <Link to="/profile" className={navigationMenuTriggerStyle()}>
 
     //                             Profile
 
     //                         </Link>
-    //                     </li>
-    //                     <li className="nav-item">
-    //                         <Link to="/" className="nav-link" onClick={logout}>
+    //                     </NavigationMenuItem>
+    //                     <NavigationMenuItem>
 
+    //                         <NavigationMenuLink className={navigationMenuTriggerStyle()} onClick={logout}>
     //                             Logout
+    //                         </NavigationMenuLink>
 
-    //                         </Link>
-    //                     </li>
+    //                     </NavigationMenuItem>
     //                 </>
     //             ) : (
     //                 <>
-
-    //                     <li className="nav-item">
-    //                         <Link to="/login" className="nav-link">
+    //                     <NavigationMenuItem>
+    //                         <Link to="/login" className={navigationMenuTriggerStyle()}>
 
     //                             Login
 
     //                         </Link>
-    //                     </li>
+    //                     </NavigationMenuItem>
     //                 </>
     //             )}
-    //         </ul>
-    //     </nav>
+    //         </NavigationMenuList>
+    //     </NavigationMenu >
 
-    // );
-
-    return (
-        <NavigationMenu>
-            <NavigationMenuList>
-                {props.user ? (
-                    <>
-                        <NavigationMenuItem>
-                            <Link to="/" className={navigationMenuTriggerStyle()}>
-
-                                Home
-
-                            </Link>
-                        </NavigationMenuItem>
-                        <NavigationMenuItem>
-                            <Link to="/profile" className={navigationMenuTriggerStyle()}>
-
-                                Profile
-
-                            </Link>
-                        </NavigationMenuItem>
-                        <NavigationMenuItem>
-
-                            <NavigationMenuLink className={navigationMenuTriggerStyle()} onClick={logout}>
-                                Logout
-                            </NavigationMenuLink>
-
-                        </NavigationMenuItem>
-                    </>
-                ) : (
-                    <>
-                        <NavigationMenuItem>
-                            <Link to="/login" className={navigationMenuTriggerStyle()}>
-
-                                Login
-
-                            </Link>
-                        </NavigationMenuItem>
-                    </>
-                )}
-            </NavigationMenuList>
-        </NavigationMenu >
-
-    )
+    // )
 }
 
 export default NavBar
