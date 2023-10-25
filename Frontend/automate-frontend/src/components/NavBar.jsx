@@ -43,6 +43,8 @@ import {
 import { Link } from 'react-router-dom'
 import { navigationMenuTriggerStyle } from "./ui/navigation-menu"
 import { useNavigate } from "react-router-dom";
+import 'bootstrap/dist/css/bootstrap.css';
+
 
 // import Link
 
@@ -60,6 +62,50 @@ function NavBar(props) {
 
     }
 
+    // return (
+    //     <nav className="navbar navbar-expand-lg navbar-light bg-light">
+    //         <a className="navbar-brand p-1" href="#">AutoMate</a>
+    //         <ul className="nav justify-content-end ml-auto">
+    //             {props.user ? (
+    //                 <>
+    //                     <li className="nav-item">
+    //                         <Link to="/" className="nav-link">
+
+    //                             Home
+
+    //                         </Link>
+    //                     </li>
+    //                     <li className="nav-item">
+    //                         <Link to="/profile" className="nav-link">
+
+    //                             Profile
+
+    //                         </Link>
+    //                     </li>
+    //                     <li className="nav-item">
+    //                         <Link to="/" className="nav-link" onClick={logout}>
+
+    //                             Logout
+
+    //                         </Link>
+    //                     </li>
+    //                 </>
+    //             ) : (
+    //                 <>
+
+    //                     <li className="nav-item">
+    //                         <Link to="/login" className="nav-link">
+
+    //                             Login
+
+    //                         </Link>
+    //                     </li>
+    //                 </>
+    //             )}
+    //         </ul>
+    //     </nav>
+
+    // );
 
     return (
         <NavigationMenu>
