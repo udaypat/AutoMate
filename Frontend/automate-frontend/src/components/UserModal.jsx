@@ -52,6 +52,29 @@ function UserModal(props) {
 
     }
 
+    const [userData, setUserData] = useState(null);
+
+    const getUserData = async () => {
+        try {
+            const response = await axios.get('http://127.0.0.1:5000/id', {
+                headers: {
+                    'Authorization': `Bearer ${token}`,
+                    'Content-Type': 'application/json',
+                },
+            }
+            );
+            if (response.status === 200) {
+                const data = response.data;
+                // console.log(data);
+                setUserData(data);
+                console.log(userData)
+            }
+        } catch (error) {
+            console.error('Error fetching user details:', error);
+        }
+    };
+
+
     let searchInterval;
 
     const handleSearch = async () => {
@@ -76,6 +99,7 @@ function UserModal(props) {
                     // Move the console.log here to see the updated value of userData.
                     console.log(data);
                     setSearching(false);
+                    getUserData();
                     clearInterval(searchInterval); // Stop polling when status is 200.
                 } else {
                     console.error('Unexpected status code:', response.status);
@@ -98,6 +122,7 @@ function UserModal(props) {
         // Clear the interval when your component unmounts to avoid memory leaks.
         return () => clearInterval(searchInterval);
     };
+
 
 
 
@@ -261,24 +286,20 @@ function UserModal(props) {
                         centered
                     >
                         <Modal.Header closeButton>
-
                             <Modal.Title>
                                 We found a Match !
                             </Modal.Title>
-
-
                         </Modal.Header>
                         <Modal.Body>
-
-                            Click on accept or reject
-
-
+                            <p>Username: {userData ? userData.username : 'Loading...'}</p>
+                            <p>Age: {userData ? userData.age : 'Loading...'}</p>
+                            <p>Gender: {userData ? userData.gender : 'Loading...'}</p>
                         </Modal.Body>
                         <Modal.Footer>
-                            <Button variant="danger" onClick={handleClose}>
+                            <Button variant="danger" style={{ backgroundColor: '#FF7077' }} onClick={handleClose}>
                                 Reject
                             </Button>
-                            <Button variant="success" onClick={handleAccept}>
+                            <Button variant="success" style={{ backgroundColor: '#107869' }} onClick={handleAccept}>
                                 Accept
                             </Button>
                         </Modal.Footer>
@@ -303,7 +324,7 @@ function UserModal(props) {
 
                     </Modal.Body>
                     {consent ? (<Modal.Footer>
-                        <Button variant="success" onClick={handleGenerate} >
+                        <Button variant="success" onClick={handleGenerate} style={{ backgroundColor: '#107869' }}>
                             Generate
                         </Button>
                     </Modal.Footer>) : null}

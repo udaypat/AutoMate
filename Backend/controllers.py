@@ -272,7 +272,19 @@ def consent():
 @jwt_required()
 def id():
     current_userid = get_jwt_identity()
-    return str(current_userid)
+    user_detail = User.query.filter_by(id=current_userid).first()
+    # print(user_detail)
+    if user_detail:
+        user_data = {
+            "id": user_detail.id,
+            "username": user_detail.username,
+            "age": user_detail.age,
+            "gender": user_detail.gender,
+        }
+        return user_data, 200
+    else:
+        return {"message": "User not found"}
+    # return str(current_userid)
 
 
 @app.route("/")
