@@ -188,9 +188,7 @@ export function RegisterForm({ className, ...props }) {
                 </button>
                 <p className="mt-2 " style={{ color: '#393f81' }}>Already have an account?
                     <Link to="/login" style={{ color: '#393f81' }}>
-
                         Login
-
                     </Link></p>
             </form>
 

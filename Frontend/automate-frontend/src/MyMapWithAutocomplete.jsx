@@ -38,7 +38,7 @@ function MyMapWithAutocomplete(props) {
                     onLoad={onLoad}
                     onPlaceChanged={onPlaceChanged}
                 >
-                    <div style={{ position: 'fixed', top: '65px', left: '50%', transform: 'translateX(-50%)', width: '240px' }}>
+                    <div style={{ position: 'fixed', top: '75px', left: '50%', transform: 'translateX(-50%)', width: '240px' }}>
                         <input
                             type="text"
                             placeholder="Enter Destination"
