@@ -331,7 +331,7 @@ function UserModal(props) {
                             Waiting for the user to accept
                         </Modal.Title>
                     </Modal.Header>
-                    <Modal.Body style={{ minHeight: '150px', minWidth: '500px' }}>
+                    <Modal.Body style={{ minHeight: '150px', minWidth: '520px' }}>
                         <div className='row'>
                             <div className='col-6'>
                                 <p>Username: {userData ? userData.username : 'Loading...'}</p>

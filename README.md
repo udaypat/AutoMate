@@ -162,35 +162,3 @@ Provide a secure in-app chat or messaging feature to facilitate communication be
 
 Encourage users to leave reviews and ratings for their ride-sharing partners to build trust and enhance the community. Implement a fair and transparent rating system.
 
-
-
-
-Every day, thousands of people face the daunting task of finding an auto-rickshaw for their daily commute, whether it's to work, college, or commonly visited places. 
-
-Their have been many more apps created for this pain point like ola uber  rapido etc
-
-But AutoMate offers a lifeline. AutoMate eliminates this problem  by seamlessly connecting users heading to the same destination, making life easier for everyone.
-
-our app AutoMate, fosters sustainability , eliminates long waits, and redefines daily commutes. 
-
-AutoMate is about connecting people, cutting costs, and making each journey a memorable part of your day. 
-
-hand over to soumya for the demo
-
-
-
-
-### Future Scope:
-
-#### Advanced Filtering :
-
-currenlty doesnt not account for prefrences
-
-Implement advanced filtering options that allow users to refine their matched ride-sharing partners based on their preferences like filtering by age, gender, ratings, and even shared interests or commuting habits
-
-
-#### In-App Chat and Communication:
-to chat with their matched mate before accepting
-
-#### User Ratings and Reviews:
-so users can rate their mates
