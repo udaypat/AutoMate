@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import React, { useState, useEffect } from 'react';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
@@ -5,14 +6,12 @@ import axios from 'axios';
 import { useNavigate } from "react-router-dom";
 
 function UserModal(props) {
-    const [userData, setUserData] = useState(null);
+    // const [userData, setUserData] = useState(null);
     const [show, setShow] = useState(true);
-
-
-
     const [searching, setSearching] = useState(true);
-
     const [accepted, setAccepted] = useState(false);
+    const [rejected, setRejected] = useState(false);
+
     const [consent, setConsent] = useState(false);
     const [routeLink, setRoutelink] = useState('');
 
@@ -72,11 +71,16 @@ function UserModal(props) {
 
     }
 
+
+
+    let searchInterval;
+
     const handleSearch = async () => {
 
         await search()
 
-        const intervalId = setInterval(async () => {
+        searchInterval = setInterval(async () => {
+
             try {
 
 
@@ -89,11 +93,11 @@ function UserModal(props) {
 
                 if (response.status === 200) {
                     const data = response.data;
-                    setUserData(data);
+                    // setUserData(data);
                     // Move the console.log here to see the updated value of userData.
                     console.log(data);
                     setSearching(false);
-                    clearInterval(intervalId); // Stop polling when status is 200.
+                    clearInterval(searchInterval); // Stop polling when status is 200.
                 } else {
                     console.error('Unexpected status code:', response.status);
                 }
@@ -103,17 +107,17 @@ function UserModal(props) {
 
             // Track the time when the polling started.
             const currentTime = new Date().getTime();
-
+            console.log("time", currentTime - startTime)
             // Check if 2 minutes have passed (120,000 milliseconds).
-            if (currentTime - startTime >= 120000) {
-                clearInterval(intervalId); // Clear the interval after 2 minutes.
+            if (currentTime - startTime >= 12000) {
+                clearInterval(searchInterval); // Clear the interval after 2 minutes.
             }
         }, 4000); // Poll every 4 seconds.
 
         const startTime = new Date().getTime(); // Record the start time.
 
         // Clear the interval when your component unmounts to avoid memory leaks.
-        return () => clearInterval(intervalId);
+        return () => clearInterval(searchInterval);
     };
 
 
@@ -143,9 +147,38 @@ function UserModal(props) {
     }
 
 
-    const handleClose = () => {
+    const handleClose = async () => {
+
+        try {
+            const response = await axios.get('http://127.0.0.1:5000/reject', {
+                headers: {
+                    'Authorization': `Bearer ${token}`,
+                    'Content-Type': 'application/json',
+                },
+            }
+
+            );
+            if (response.status === 200) {
+                const data = response.data;
+                console.log(data);
+
+                setSearching(true);
+                setAccepted(false);
+                setShow(false)
+                setConsent(false);
+                setRoutelink('');
+                clearInterval(searchInterval);
+                clearInterval(pollConsent)
+
+                alert('rejected');
+
+            }
+        } catch (error) {
+            console.error('Error fetching user details:', error);
+        }
         setShow(false);
         navigate('/');
+        clearInterval(searchInterval);
         console.log("closed modal");
         props.setopen(false);
     }
@@ -176,8 +209,10 @@ function UserModal(props) {
         }
     }
 
+    let pollConsentId
+
     const pollConsent = () => {
-        const intervalId = setInterval(async () => {
+        pollConsentId = setInterval(async () => {
             try {
 
 
@@ -192,7 +227,7 @@ function UserModal(props) {
 
 
                     setConsent(true)
-                    clearInterval(intervalId);
+                    clearInterval(pollConsentId);
                     const data = response.data;
 
                     console.log(data);
@@ -210,20 +245,21 @@ function UserModal(props) {
 
             // Check if 2 minutes have passed (120,000 milliseconds).
             if (currentTime - startTime >= 120000) {
-                clearInterval(intervalId); // Clear the interval after 2 minutes.
+                clearInterval(pollConsentId); // Clear the interval after 2 minutes.
             }
         }, 4000); // Poll every 4 seconds.
 
         const startTime = new Date().getTime(); // Record the start time.
 
         // Clear the interval when your component unmounts to avoid memory leaks.
-        return () => clearInterval(intervalId);
+        return () => clearInterval(pollConsentId);
     };
 
 
 
     return (
         <>
+
             {searching && !accepted ? (
 
                 <Modal show={show} onHide={handleClose} centered onShow={handleSearch} >
@@ -234,19 +270,15 @@ function UserModal(props) {
 
                         </Modal.Title>
 
-
                     </Modal.Header>
                     <Modal.Body>
 
                         Wait while we search for users
 
-
                     </Modal.Body>
 
                 </Modal>) :
-
                 (
-
                     <Modal show={show} onHide={handleClose}
                         centered
                     >
@@ -303,6 +335,8 @@ function UserModal(props) {
 
                 </Modal>
             ) : null}
+
+
         </>
 
         // {searching ? <>Searching for users</> : <>Waiting for users</>}

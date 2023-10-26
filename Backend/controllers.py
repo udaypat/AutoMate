@@ -314,6 +314,24 @@ def origin_accepted():
     # return matched_users
 
 
+@app.get("/reject")
+@jwt_required()
+def reject():
+    global matched_users
+    global searching_users
+
+    current_userid = get_jwt_identity()
+    try:
+        del searching_users[current_userid]
+        del matched_users[current_userid]
+        other_user_id = matched_users[current_userid]["matched_id"]
+        del matched_users[other_user_id]
+    except:
+        return "Something went wrong. fix it"
+
+    return jsonify("Rejected")
+
+
 # Checks if both user accepted
 @app.get("/consent")
 @jwt_required()
