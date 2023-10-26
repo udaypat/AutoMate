@@ -53,6 +53,8 @@ function UserModal(props) {
     }
 
     const [userData, setUserData] = useState(null);
+    console.log(routeLink);
+
 
     const getUserData = async () => {
         try {
@@ -72,6 +74,10 @@ function UserModal(props) {
         } catch (error) {
             console.error('Error fetching user details:', error);
         }
+    };
+
+    const openGoogle = () => {
+        window.open(routeLink, '_blank');
     };
 
 
@@ -187,6 +193,7 @@ function UserModal(props) {
     }
 
     const handleGenerate = async () => {
+        console.log('generating');
         try {
             const postData = {
                 waypoint: props.userLocation,
@@ -203,7 +210,7 @@ function UserModal(props) {
 
             if (response.status === 200) {
                 setRoutelink(response.data)
-                alert(response.data)
+                // alert(response.data)
                 console.log(response.data)
             }
         }
@@ -213,6 +220,9 @@ function UserModal(props) {
     }
 
     let pollConsentId
+
+
+
 
     const pollConsent = () => {
         pollConsentId = setInterval(async () => {
@@ -257,6 +267,13 @@ function UserModal(props) {
         // Clear the interval when your component unmounts to avoid memory leaks.
         return () => clearInterval(pollConsentId);
     };
+
+    useEffect(() => {
+        if (consent) {
+            console.log('generating');
+            handleGenerate();
+        }
+    }, [consent]);
 
 
 
@@ -331,10 +348,14 @@ function UserModal(props) {
 
                     </Modal.Body>
                     {consent ? (
-                        <Modal.Footer>
-                            <Button variant="success" onClick={handleGenerate} style={{ backgroundColor: '#107869' }}>
-                                Generate
-                            </Button>
+                        <Modal.Footer >
+
+                            {routeLink ?
+                                <Button variant="success" onClick={openGoogle} style={{ backgroundColor: '#107869' }}>
+                                    Start Route
+                                </Button> : null}
+
+
                         </Modal.Footer>) : null}
 
                 </Modal>
