@@ -19,9 +19,9 @@ function NavBar(props) {
     return (
         <>
             {props.user ? (
-                <nav className="navbar navbar-expand-lg navbar-light bg-light px-5 p-2">
+                <nav className="navbar navbar-expand-lg navbar-light bg-light px-5 p-2" >
                     {/* <div className="container"> */}
-                    <div className="d-flex align-items-center ">
+                    <div className="d-flex align-items-center">
                         <Link to="/">
                             <svg width="1em" height="1em" fill="currentColor" viewBox="0 0 50 50" className="bi bi-cart animate__animated animate__wobble" data-bss-hover-animate="wobble" style={{ fontSize: '50px' }}>
                                 <image xlinkHref="/auto.svg" width="50" height="50" />
