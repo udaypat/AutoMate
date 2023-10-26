@@ -141,7 +141,7 @@ function UserModal(props) {
                 const data = response.data;
                 console.log(data);
 
-                alert('accepted');
+                // alert('accepted');
                 setAccepted(true);
             }
         } catch (error) {
@@ -173,7 +173,7 @@ function UserModal(props) {
                 clearInterval(searchInterval);
                 clearInterval(pollConsent)
 
-                alert('rejected');
+                // alert('rejected');
 
             }
         } catch (error) {
