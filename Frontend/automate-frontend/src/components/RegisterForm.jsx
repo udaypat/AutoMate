@@ -59,8 +59,8 @@ export function RegisterForm({ className, ...props }) {
 
     return (
         <>
-            <form id="myForm" onSubmit={onSubmit} >
-                <div className="form-outline mb-3">
+            <form id="myForm" onSubmit={onSubmit}>
+                <div className="form-outline mb-3" >
                     <label className="form-label" htmlFor="email">
                         Email
                     </label>
@@ -186,8 +186,8 @@ export function RegisterForm({ className, ...props }) {
                 <button type="submit" form='myForm' style={{ backgroundColor: '#296E73' }} className="btn btn-primary btn-block">
                     Submit
                 </button>
-                <p className="mt-2 " style={{ color: '#393f81' }}>Already have an account?
-                    <Link to="/login" style={{ color: '#393f81' }}>
+                <p className="mt-2 " style={{ color: '#296E73' }}>Already have an account?
+                    <Link to="/login" style={{ color: '#296E73', textDecoration: 'underline' }}>
                         Login
                     </Link></p>
             </form>
