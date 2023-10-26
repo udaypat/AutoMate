@@ -1,9 +1,11 @@
 #### Team Name - AutoMate
 #### Problem Statement - 
 
-AutoMate addresses the need for cost-effective and efficient commuting by connecting users with shared auto rides to the same destination. 
+Every day, thousands of people face the daunting task of finding an auto-rickshaw for their daily commute, whether it's to work, college, or commonly visited places. The struggle is real, with escalating fares and the frustration of locating a vacant auto.
 
-It solves the problem of high fares associated with individual shared autos and offers real-time notifications for convenient ride-sharing, reducing travel expenses and promoting eco-friendly transportation.
+ But AutoMate offers a lifeline. It's a remedy for the challenges of cost-effective and efficient commuting. AutoMate eliminates the awkwardness of approaching strangers for shared rides by seamlessly connecting users heading to the same destination, making life easier for everyone.
+
+With AutoMate, you no longer have to embark on that auto ride alone. This innovative solution fosters community, eliminates long waits, and redefines daily commutes. AutoMate is about connecting people, cutting costs, and making each journey a memorable part of your day. 
 
 #### Team Leader Email - uday.patil92@gmail.com
 
