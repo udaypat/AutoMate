@@ -11,7 +11,7 @@ import { Link } from 'react-router-dom';
 import MyMapWithAutocomplete from '@/MyMapWithAutocomplete';
 const containerStyle = {
     width: "100%",
-    height: "400px",
+    height: "555px",
 };
 
 function Dashboard() {

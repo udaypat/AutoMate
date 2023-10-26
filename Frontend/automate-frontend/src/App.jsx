@@ -1,19 +1,7 @@
 import { useEffect, useState } from 'react'
-import { GoogleMap, LoadScript, Marker } from "@react-google-maps/api";
-import { Link } from 'react-router-dom';
-import { Button } from "@/components/ui/button"
-
-import Login from './Login';
 import Landing from './Landing';
-// import Login from './extra_pages/Login'
 import Navbar from './components/NavBar';
-
 import Dashboard from './components/Dashboard';
-
-const containerStyle = {
-  width: "400px",
-  height: "400px",
-};
 
 function App() {
   const apiKey = import.meta.env.VITE_GOOGLE_MAPS_API_KEY
@@ -23,10 +11,6 @@ function App() {
   const [user, setUser] = useState()
   const [isLoggedIn, setLoggedIn] = useState(false);
 
-
-  const mapOptions = {
-    zoom: 15,
-  };
 
   const [locationPermission, setLocationPermission] = useState(null);
 
@@ -56,9 +40,7 @@ function App() {
       if (locationPermission == 'denied') {
         alert('why u deny');
       }
-      // console.log('prompt shown');
       navigator.geolocation.getCurrentPosition((position) => {
-        // console.log('prompt accepted');
         const userLat = position.coords.latitude;
         const userLng = position.coords.longitude;
         setUserLocation({ lat: userLat, lng: userLng });
@@ -71,7 +53,6 @@ function App() {
   useEffect(() => {
     const loggedInUser = localStorage.getItem("user");
     if (loggedInUser) {
-      // const foundUser = JSON.parse(loggedInUser);
       setUser(loggedInUser);
     }
   }, []);
@@ -97,20 +78,7 @@ function App() {
   return (
     <>
       <Navbar setUser={setUser} user={user} />
-      {/* {user} */}
       {user ? <Dashboard /> : <Landing />}
-
-      {/* <SiginIn /> */}
-
-      {/* <LoadScript googleMapsApiKey={apiKey}>
-        <GoogleMap mapContainerStyle={containerStyle} center={userLocation} zoom={mapOptions.zoom} >
-          {userLocation && <Marker position={userLocation} />}
-        </GoogleMap>
-      </LoadScript> */}
-
-
-      {/* <DemoCreateAccount /> */}
-
     </>
   );
 }

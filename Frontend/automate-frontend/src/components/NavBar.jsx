@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 // import { Link } from 'react-router-dom';
 
 // const Navbar = ({ isLoggedIn }) => {
@@ -29,26 +30,10 @@
 // };
 
 // export default Navbar;
-import React from 'react'
-import {
-    NavigationMenu,
-    NavigationMenuContent,
-    NavigationMenuIndicator,
-    NavigationMenuItem,
-    NavigationMenuLink,
-    NavigationMenuList,
-    NavigationMenuTrigger,
-    NavigationMenuViewport,
-} from "./ui/navigation-menu"
+
 import { Link } from 'react-router-dom'
-import { navigationMenuTriggerStyle } from "./ui/navigation-menu"
 import { useNavigate } from "react-router-dom";
 import 'bootstrap/dist/css/bootstrap.css';
-
-
-// import Link
-
-
 
 
 function NavBar(props) {
@@ -75,11 +60,11 @@ function NavBar(props) {
                                 Home
                             </Link>
                         </li>
-                        <li className="nav-item">
+                        {/* <li className="nav-item">
                             <Link to="/profile" className="nav-link" style={{ color: "black" }}>
                                 Profile
                             </Link>
-                        </li>
+                        </li> */}
                         <li className="nav-item">
                             <Link to="/" className="nav-link" onClick={logout} style={{ color: "black" }}>
                                 Logout
@@ -99,50 +84,6 @@ function NavBar(props) {
             )}
         </>
     );
-
-
-    // return (
-    //     <NavigationMenu>
-    //         <NavigationMenuList>
-    //             {props.user ? (
-    //                 <>
-    //                     <NavigationMenuItem>
-    //                         <Link to="/" className={navigationMenuTriggerStyle()}>
-
-    //                             Home
-
-    //                         </Link>
-    //                     </NavigationMenuItem>
-    //                     <NavigationMenuItem>
-    //                         <Link to="/profile" className={navigationMenuTriggerStyle()}>
-
-    //                             Profile
-
-    //                         </Link>
-    //                     </NavigationMenuItem>
-    //                     <NavigationMenuItem>
-
-    //                         <NavigationMenuLink className={navigationMenuTriggerStyle()} onClick={logout}>
-    //                             Logout
-    //                         </NavigationMenuLink>
-
-    //                     </NavigationMenuItem>
-    //                 </>
-    //             ) : (
-    //                 <>
-    //                     <NavigationMenuItem>
-    //                         <Link to="/login" className={navigationMenuTriggerStyle()}>
-
-    //                             Login
-
-    //                         </Link>
-    //                     </NavigationMenuItem>
-    //                 </>
-    //             )}
-    //         </NavigationMenuList>
-    //     </NavigationMenu >
-
-    // )
 }
 
 export default NavBar

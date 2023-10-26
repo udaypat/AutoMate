@@ -1,24 +1,13 @@
+/* eslint-disable react/prop-types */
 import { useRef, useState } from 'react';
-import { GoogleMap, LoadScript, Autocomplete } from '@react-google-maps/api';
+import { Autocomplete } from '@react-google-maps/api';
 import axios from 'axios';
 import UserModal from './components/UserModal';
-
-const mapContainerStyle = {
-    height: "400px",
-    width: "1500px"
-}
-
-const center = {
-    lat: 38.685,
-    lng: -115.234
-}
 
 function MyMapWithAutocomplete(props) {
     const autocompleteRef = useRef(null);
     const [open, setopen] = useState(false)
     const [destination, setDestination] = useState(false)
-    // console.log('from my maps', props);
-
 
 
     const onLoad = (autocomplete) => {
@@ -28,9 +17,6 @@ function MyMapWithAutocomplete(props) {
 
     const onPlaceChanged = async () => {
         if (autocompleteRef.current !== null) {
-            // console.log(autocompleteRef.current.getPlace());
-            // console.log(autocompleteRef.current.getPlace().geometry.location.lng());
-
             try {
                 const response = await axios.post("http://127.0.0.1:5000/destination", autocompleteRef.current.getPlace());
                 console.log('Response:', response.data);
@@ -46,31 +32,6 @@ function MyMapWithAutocomplete(props) {
     }
 
     return (
-        // <Autocomplete
-        //     onLoad={onLoad}
-        //     onPlaceChanged={onPlaceChanged}
-        // >
-        //     <input
-        //         type="text"
-        //         placeholder="Enter Destination"
-        //         style={{
-        //             boxSizing: `border-box`,
-        //             border: `1px solid transparent`,
-        //             width: `240px`,
-        //             height: `32px`,
-        //             padding: `0 12px`,
-        //             borderRadius: `3px`,
-        //             boxShadow: `0 2px 6px rgba(0, 0, 0, 0.3)`,
-        //             fontSize: `14px`,
-        //             outline: `none`,
-        //             textOverflow: `ellipsis`,
-        //             position: "absolute",
-        //             left: "50%",
-        //             marginLeft: "-120px"
-        //         }}
-        //     />
-        // </Autocomplete>
-
         <>
             {open ? <UserModal destination={destination} userLocation={props.userLocation} setopen={setopen} /> :
                 <Autocomplete

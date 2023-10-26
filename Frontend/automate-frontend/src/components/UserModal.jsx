@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import axios from 'axios';
@@ -15,27 +15,8 @@ function UserModal(props) {
     const [consent, setConsent] = useState(false);
     const [routeLink, setRoutelink] = useState('');
 
-
-
     const token = localStorage.getItem("user");
     const navigate = useNavigate();
-
-
-
-    // const [loading, setLoading] = useState(false);
-
-
-    // const fetchUserDetails = async () => {
-
-    // };
-
-
-
-    // const handleNewUser = () => {
-    //     setUserData(null);
-    //     setLoading(true);
-    //     fetchUserDetails();
-    // };
     console.log('from user modal', props.userLocation);
     const search = async () => {
         try {
@@ -70,8 +51,6 @@ function UserModal(props) {
 
 
     }
-
-
 
     let searchInterval;
 
@@ -119,7 +98,6 @@ function UserModal(props) {
         // Clear the interval when your component unmounts to avoid memory leaks.
         return () => clearInterval(searchInterval);
     };
-
 
 
 
@@ -325,9 +303,6 @@ function UserModal(props) {
 
                     </Modal.Body>
                     {consent ? (<Modal.Footer>
-                        {/* <Button variant="danger" onClick={handleClose}>
-                            Reject
-                        </Button> */}
                         <Button variant="success" onClick={handleGenerate} >
                             Generate
                         </Button>
@@ -338,45 +313,6 @@ function UserModal(props) {
 
 
         </>
-
-        // {searching ? <>Searching for users</> : <>Waiting for users</>}
-
-        // {searching ? <>Wait while we search for users</> : <>Waiting for the other user to accept </>}
-
-        // <div
-
-        //     style={{
-        //         boxSizing: `border-box`,
-        //         border: `1px solid transparent`,
-        //         width: `240px`,
-        //         height: `32px`,
-        //         padding: `0 12px`,
-        //         borderRadius: `3px`,
-        //         boxShadow: `0 2px 6px rgba(0, 0, 0, 0.3)`,
-        //         fontSize: `14px`,
-        //         outline: `none`,
-        //         textOverflow: `ellipsis`,
-        //         position: "absolute",
-        //         left: "50%",
-        //         marginLeft: "-120px"
-        //     }}
-        // >
-        //     {loading ? (
-        //         <p>Searching for users...</p>
-        //     ) : userData ? (
-
-        //         <div>
-        //             <h2>User Details</h2>
-        //             <p>Name: {userData.name}</p>
-        //             <p>Age: {userData.age}</p>
-        //             <button onClick={handleNewUser}>Find New User</button>
-        //             <button onClick={handleAcceptUser}>Accept User</button>
-        //         </div>
-
-        //     ) : (
-        //         <p>No users found</p>
-        //     )}
-        // </div>
     );
 }
 

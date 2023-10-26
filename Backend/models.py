@@ -10,6 +10,3 @@ class User(db.Model):
     password = db.Column(db.String(120), nullable=False)
     pgender = db.Column(db.String)
     pagegrp = db.Column(db.Integer)
-
-    # def __init__(self, title):
-    #     self.title = title

@@ -2,14 +2,11 @@ import * as React from "react";
 import * as ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider, } from "react-router-dom";
 
-// import Register from './extra_pages/Register.jsx'
-// import Login from "./extra_pages/Login.jsx";
 import Login from "./Login.jsx";
 import Landing from "./Landing.jsx";
-
 import App from './App.jsx'
-import EditProfile from './EditProfile.jsx'
-// import MyMapWithAutocomplete from './AutoComplete.jsx'
+// import EditProfile from './EditProfile.jsx'
+
 
 import './index.css'
 
@@ -27,13 +24,9 @@ const router = createBrowserRouter([
     path: "/",
     element: <App />,
   },
-  {
-    path: "/profile",
-    element: <EditProfile />,
-  },
   // {
-  //   path: "/autocomplete",
-  //   element: <MyMapWithAutocomplete />
+  //   path: "/profile",
+  //   element: <EditProfile />,
   // },
 ]);
 
