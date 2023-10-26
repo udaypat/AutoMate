@@ -276,15 +276,14 @@ function UserModal(props) {
                     </Modal.Header>
                     <Modal.Body>
 
-                        Wait while we search for users
+                        Wait while we search for nearby users
 
                     </Modal.Body>
 
                 </Modal>) :
                 (
                     <Modal show={show} onHide={handleClose}
-                        centered
-                    >
+                        centered>
                         <Modal.Header closeButton>
                             <Modal.Title>
                                 We found a Match !
@@ -311,23 +310,32 @@ function UserModal(props) {
                     centered onShow={pollConsent}
                 >
                     <Modal.Header closeButton>
-
                         <Modal.Title>
-                            Waiting
+                            Waiting for the user to accept
                         </Modal.Title>
-
-
                     </Modal.Header>
-                    <Modal.Body>
+                    <Modal.Body style={{ minHeight: '150px', minWidth: '500px' }}>
+                        <div className='row'>
+                            <div className='col-6'>
+                                <p>Username: {userData ? userData.username : 'Loading...'}</p>
+                                <p>Age: {userData ? userData.age : 'Loading...'}</p>
+                                <p>Gender: {userData ? userData.gender : 'Loading...'}</p>
+                            </div>
+                            <div className='col-6'>
+                                <img src="/auto.svg" alt="Your Icon" style={{
+                                    width: '100px', height: '100px'
+                                }} />
+                            </div>
+                        </div>
 
-                        Waiting for other user to accept
 
                     </Modal.Body>
-                    {consent ? (<Modal.Footer>
-                        <Button variant="success" onClick={handleGenerate} style={{ backgroundColor: '#107869' }}>
-                            Generate
-                        </Button>
-                    </Modal.Footer>) : null}
+                    {consent ? (
+                        <Modal.Footer>
+                            <Button variant="success" onClick={handleGenerate} style={{ backgroundColor: '#107869' }}>
+                                Generate
+                            </Button>
+                        </Modal.Footer>) : null}
 
                 </Modal>
             ) : null}
