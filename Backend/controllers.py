@@ -289,4 +289,4 @@ def id():
 
 @app.route("/")
 def index():
-    return "I love you sm"
+    return "I love automate"
