@@ -11,7 +11,7 @@ function MyMapWithAutocomplete(props) {
 
 
     const onLoad = (autocomplete) => {
-        console.log('autocomplete: ', autocomplete);
+        // console.log('autocomplete: ', autocomplete);
         autocompleteRef.current = autocomplete;
     }
 
@@ -19,7 +19,7 @@ function MyMapWithAutocomplete(props) {
         if (autocompleteRef.current !== null) {
             try {
                 const response = await axios.post("https://udayp.live/api/destination", autocompleteRef.current.getPlace());
-                console.log('Response:', response.data);
+                // console.log('Response:', response.data);
                 setDestination(response.data)
                 setopen(true)
                 // navigate("/");
@@ -27,7 +27,7 @@ function MyMapWithAutocomplete(props) {
                 console.error('Error:', error);
             }
         } else {
-            console.log('Autocomplete is not loaded yet!');
+            // console.log('Autocomplete is not loaded yet!');
         }
     }
 

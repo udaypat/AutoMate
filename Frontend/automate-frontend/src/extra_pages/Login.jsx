@@ -16,10 +16,10 @@ function Login({ setlogin }) {
             const data = { email, password };
             const response = await axios.post("https://udayp.live/api/login", data);
             setlogin(true)
-            console.log('Response:', response.data);
+            // console.log('Response:', response.data);
 
         } catch (error) {
-            console.error('Error:', error);
+            // console.error('Error:', error);
         }
     };
 

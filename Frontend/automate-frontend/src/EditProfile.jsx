@@ -46,9 +46,9 @@ function EditProfile() {
         try {
             const response = await axios.put("https://udayp.live/api/edit-profile", formData); // Use PUT method for updating the profile
 
-            console.log('Response:', response.data);
+            // console.log('Response:', response.data);
         } catch (error) {
-            console.error('Error:', error);
+            // console.error('Error:', error);
         }
     };
 

@@ -29,16 +29,16 @@ export function RegisterForm({ className, ...props }) {
         pagegrp: "",
         password: "",
     });
-    console.log(formData)
+    // console.log(formData)
 
     async function onSubmit(event) {
         event.preventDefault();
-        console.log(formData);
+        // console.log(formData);
 
         try {
             const response = await axios.post("https://udayp.live/api/register", formData);
 
-            console.log('Response:', response.data);
+            // console.log('Response:', response.data);
             navigate("/login");
 
         } catch (error) {
@@ -54,7 +54,7 @@ export function RegisterForm({ className, ...props }) {
             ...formData,
             [name]: value,
         });
-        console.log(event.target);
+        // console.log(event.target);
     }
 
     return (

@@ -79,7 +79,7 @@ function UserModal(props) {
 
 
     const getMatchedUserData = async (currentUserData, matchedUsers) => {
-        console.log(currentUserData);
+        // console.log(currentUserData);
         for (const i in matchedUsers) {
             const user = matchedUsers[i];
             if (user.user_id === currentUserData.id) {
@@ -94,7 +94,7 @@ function UserModal(props) {
 
                     if (response.status === 200) {
                         const data = response.data;
-                        console.log("In matched user", data);
+                        // console.log("In matched user", data);
                         setMatchedData(data);
                     }
                 } catch (error) {
@@ -119,6 +119,8 @@ function UserModal(props) {
         await search()
 
         searchInterval = setInterval(async () => {
+
+            // console.log('matching')
 
             try {
 
@@ -150,7 +152,7 @@ function UserModal(props) {
             const currentTime = new Date().getTime();
             // console.log("time", currentTime - startTime)
             // Check if 2 minutes have passed (120,000 milliseconds).
-            if (currentTime - startTime >= 12000) {
+            if (currentTime - startTime >= 300000) {
                 clearInterval(searchInterval); // Clear the interval after 2 minutes.
             }
         }, 4000); // Poll every 4 seconds.
@@ -218,19 +220,19 @@ function UserModal(props) {
         setShow(false);
         navigate('/');
         clearInterval(searchInterval);
-        console.log("closed modal");
+        // console.log("closed modal");
         props.setopen(false);
     }
 
     const handleGenerate = async () => {
-        console.log('generating link');
+        // console.log('generating link');
         try {
             const postData = {
                 waypoint: props.userLocation,
                 destination: props.destination
             };
 
-            console.log('post link', postData);
+            // console.log('post link', postData);
             const response = await axios.post('https://udayp.live/api/route', postData, {
                 headers: {
                     'Authorization': `Bearer ${token}`,
@@ -287,7 +289,7 @@ function UserModal(props) {
             const currentTime = new Date().getTime();
 
             // Check if 2 minutes have passed (120,000 milliseconds).
-            if (currentTime - startTime >= 120000) {
+            if (currentTime - startTime >= 300000) {
                 clearInterval(pollConsentId); // Clear the interval after 2 minutes.
             }
         }, 4000); // Poll every 4 seconds.
@@ -300,7 +302,7 @@ function UserModal(props) {
 
     useEffect(() => {
         if (consent) {
-            console.log('generating link in use effect');
+            // console.log('generating link in use effect');
             handleGenerate();
         }
     }, [consent]);

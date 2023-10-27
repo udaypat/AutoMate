@@ -21,12 +21,12 @@ export default function Login() {
         try {
             const response = await axios.post("https://udayp.live/api/login", formData);
 
-            console.log('Response:', response.data.access_token);
+            // console.log('Response:', response.data.access_token);
             localStorage.setItem('user', response.data.access_token)
             setError(false)
             navigate("/");
         } catch (error) {
-            console.log(error.response)
+            // console.log(error.response)
             setError(true)
             setErrorMsg(error.response.data.msg)
             setUser({});
@@ -42,7 +42,7 @@ export default function Login() {
     }, [user]);
 
     function handleInputChange(event) {
-        console.log(formData);
+        // console.log(formData);
         const { name, value } = event.target;
         setFormData({
             ...formData,

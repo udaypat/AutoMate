@@ -15,15 +15,15 @@ function MyMapWithAutocomplete() {
     const autocompleteRef = useRef(null);
 
     const onLoad = (autocomplete) => {
-        console.log('autocomplete: ', autocomplete);
+        // console.log('autocomplete: ', autocomplete);
         autocompleteRef.current = autocomplete;
     }
 
     const onPlaceChanged = () => {
         if (autocompleteRef.current !== null) {
-            console.log(autocompleteRef.current.getPlace());
+            // console.log(autocompleteRef.current.getPlace());
         } else {
-            console.log('Autocomplete is not loaded yet!');
+            // console.log('Autocomplete is not loaded yet!');
         }
     }
 

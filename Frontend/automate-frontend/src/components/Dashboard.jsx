@@ -54,9 +54,9 @@ function Dashboard() {
             if (locationPermission == 'denied') {
                 alert('why u deny');
             }
-            console.log('prompt shown');
+            // console.log('prompt shown');
             navigator.geolocation.getCurrentPosition((position) => {
-                console.log('prompt accepted');
+                // console.log('prompt accepted');
                 const userLat = position.coords.latitude;
                 const userLng = position.coords.longitude;
                 setUserLocation({ lat: userLat, lng: userLng });
@@ -82,7 +82,7 @@ function Dashboard() {
         }
     };
 
-    console.log(apiKey);
+    // console.log(apiKey);
 
     return (
         <>
