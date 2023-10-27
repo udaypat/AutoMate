@@ -36,7 +36,7 @@ export function RegisterForm({ className, ...props }) {
         console.log(formData);
 
         try {
-            const response = await axios.post("http://127.0.0.1:5000/register", formData);
+            const response = await axios.post("https://udayp.live/api/register", formData);
 
             console.log('Response:', response.data);
             navigate("/login");

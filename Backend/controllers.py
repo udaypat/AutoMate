@@ -48,7 +48,7 @@ matched_users = {}
 searching_users = {}
 
 
-@app.post("/login")
+@app.post("/api/login")
 def login():
     # Getting user Creds
     userdata = request.get_json()
@@ -70,7 +70,7 @@ def login():
 
 
 # Create User
-@app.post("/register")
+@app.post("/api/register")
 def register():
     userdata = request.get_json()
     usr = User.query.filter_by(username=userdata["username"]).first()
@@ -99,7 +99,7 @@ def register():
     return jsonify("Success")
 
 
-@app.post("/destination")
+@app.post("/api/destination")
 def destination():
     autocomplete_data = request.get_json()
     # coordinates = autocomplete_data["geometry"]["location"]
@@ -107,7 +107,7 @@ def destination():
     return name
 
 
-@app.post("/route")
+@app.post("/api/route")
 def generate_route():
     locations = request.get_json()
     waypoint = locations["waypoint"]
@@ -119,7 +119,7 @@ def generate_route():
 
 
 # Adds users to a searching queue
-@app.post("/search")
+@app.post("/api/search")
 @jwt_required()
 def search():
     current_userid = get_jwt_identity()
@@ -134,7 +134,7 @@ def search():
 
 
 # Compares curr user with all other users in the search queue and matchs with nearest one
-@app.get("/match")
+@app.get("/api/match")
 @jwt_required()
 def match():
     global searching_users
@@ -218,7 +218,7 @@ def match():
 
 
 # Checks if a user has accepted
-@app.get("/accepted")
+@app.get("/api/accepted")
 @jwt_required()
 def origin_accepted():
     current_userid = get_jwt_identity()
@@ -232,7 +232,7 @@ def origin_accepted():
         return "no user is matched with current user.", 401
 
 
-@app.get("/reject")
+@app.get("/api/reject")
 @jwt_required()
 def reject():
     global matched_users
@@ -251,7 +251,7 @@ def reject():
 
 
 # Checks if both user accepted
-@app.get("/consent")
+@app.get("/api/consent")
 @jwt_required()
 def consent():
     current_userid = get_jwt_identity()
@@ -270,7 +270,7 @@ def consent():
         return "no user is matched with current user.", 401
 
 
-@app.get("/id")
+@app.get("/api/id")
 @jwt_required()
 def id():
     current_userid = get_jwt_identity()
@@ -289,7 +289,7 @@ def id():
     # return str(current_userid)
 
 
-@app.get("/id/<int:matchedId>")
+@app.get("/api/id/<int:matchedId>")
 # @jwt_required()
 def get_user_by_id(matchedId):
     user_detail = User.query.filter_by(id=matchedId).first()
@@ -306,6 +306,6 @@ def get_user_by_id(matchedId):
         return {"message": "User not found"}, 404
 
 
-@app.route("/")
+@app.route("/api")
 def index():
     return "I love automate"

@@ -19,7 +19,7 @@ export default function Login() {
         event.preventDefault();
 
         try {
-            const response = await axios.post("http://127.0.0.1:5000/login", formData);
+            const response = await axios.post("https://udayp.live/api/login", formData);
 
             console.log('Response:', response.data.access_token);
             localStorage.setItem('user', response.data.access_token)

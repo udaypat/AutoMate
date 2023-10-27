@@ -27,7 +27,7 @@ function UserModal(props) {
             };
 
 
-            const response = await axios.post('http://127.0.0.1:5000/search', postData, {
+            const response = await axios.post('https://udayp.live/api/search', postData, {
                 headers: {
                     'Authorization': `Bearer ${token}`,
 
@@ -60,7 +60,7 @@ function UserModal(props) {
 
     const getCurrentUserData = async () => {
         try {
-            const response = await axios.get('http://127.0.0.1:5000/id', {
+            const response = await axios.get('https://udayp.live/api/id', {
                 headers: {
                     'Authorization': `Bearer ${token}`,
                     'Content-Type': 'application/json',
@@ -85,7 +85,7 @@ function UserModal(props) {
             if (user.user_id === currentUserData.id) {
                 // console.log("hello", user.user_id, user.matched_id)
                 try {
-                    const response = await axios.get(`http://127.0.0.1:5000/id/${user.matched_id}`, {
+                    const response = await axios.get(`https://udayp.live/api/id/${user.matched_id}`, {
                         headers: {
                             'Authorization': `Bearer ${token}`,
                             'Content-Type': 'application/json',
@@ -123,7 +123,7 @@ function UserModal(props) {
             try {
 
 
-                const response = await axios.get('http://127.0.0.1:5000/match', {
+                const response = await axios.get('https://udayp.live/api/match', {
                     headers: {
                         'Authorization': `Bearer ${token}`,
                         'Content-Type': 'application/json',
@@ -169,7 +169,7 @@ function UserModal(props) {
 
     const handleAccept = async () => {
         try {
-            const response = await axios.get('http://127.0.0.1:5000/accepted', {
+            const response = await axios.get('https://udayp.live/api/accepted', {
                 headers: {
                     'Authorization': `Bearer ${token}`,
                     'Content-Type': 'application/json',
@@ -191,7 +191,7 @@ function UserModal(props) {
     const handleClose = async () => {
 
         try {
-            const response = await axios.get('http://127.0.0.1:5000/reject', {
+            const response = await axios.get('https://udayp.live/api/reject', {
                 headers: {
                     'Authorization': `Bearer ${token}`,
                     'Content-Type': 'application/json',
@@ -231,7 +231,7 @@ function UserModal(props) {
             };
 
             console.log('post link', postData);
-            const response = await axios.post('http://127.0.0.1:5000/route', postData, {
+            const response = await axios.post('https://udayp.live/api/route', postData, {
                 headers: {
                     'Authorization': `Bearer ${token}`,
                     'Content-Type': 'application/json',
@@ -259,7 +259,7 @@ function UserModal(props) {
             try {
 
 
-                const response = await axios.get('http://127.0.0.1:5000/consent', {
+                const response = await axios.get('https://udayp.live/api/consent', {
                     headers: {
                         'Authorization': `Bearer ${token}`,
                         'Content-Type': 'application/json',

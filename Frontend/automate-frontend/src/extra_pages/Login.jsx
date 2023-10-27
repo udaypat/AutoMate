@@ -14,7 +14,7 @@ function Login({ setlogin }) {
         e.preventDefault();
         try {
             const data = { email, password };
-            const response = await axios.post("http://127.0.0.1:5000/login", data);
+            const response = await axios.post("https://udayp.live/api/login", data);
             setlogin(true)
             console.log('Response:', response.data);
 

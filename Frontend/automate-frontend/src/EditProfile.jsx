@@ -16,7 +16,7 @@ function EditProfile() {
 
         async function fetchUserProfile() {
             try {
-                const response = await axios.get("http://127.0.0.1:5000/edit_profile"); //URL WRONG
+                const response = await axios.get("https://udayp.live/api/edit_profile"); //URL WRONG
                 const userProfile = response.data;
 
                 // Update the formData state with the user's profile data
@@ -44,7 +44,7 @@ function EditProfile() {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const response = await axios.put("http://127.0.0.1:5000/edit-profile", formData); // Use PUT method for updating the profile
+            const response = await axios.put("https://udayp.live/api/edit-profile", formData); // Use PUT method for updating the profile
 
             console.log('Response:', response.data);
         } catch (error) {

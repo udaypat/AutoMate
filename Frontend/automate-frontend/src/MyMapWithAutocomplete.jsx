@@ -18,7 +18,7 @@ function MyMapWithAutocomplete(props) {
     const onPlaceChanged = async () => {
         if (autocompleteRef.current !== null) {
             try {
-                const response = await axios.post("http://127.0.0.1:5000/destination", autocompleteRef.current.getPlace());
+                const response = await axios.post("https://udayp.live/api/destination", autocompleteRef.current.getPlace());
                 console.log('Response:', response.data);
                 setDestination(response.data)
                 setopen(true)
