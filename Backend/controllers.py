@@ -138,19 +138,20 @@ def search():
 @jwt_required()
 def match():
     global searching_users
+
+    current_userid = get_jwt_identity()
+
+    origin = searching_users[current_userid]["currentloc"]
+
+    if origin is None:
+        return jsonify("Location not enabled"), 400
+
+    destinations = []
     # print(searching_users)
     # print(len(searching_users))
 
     if len(searching_users) < 2:
-        return jsonify("No other user currently searching"), 400
-
-    current_userid = get_jwt_identity()
-    # origins = request.get_json()
-    origin = searching_users[current_userid]["currentloc"]
-    # origins = [
-    #     {"lat": 20.01840125104432, "lng": 72.8372607837342}
-    # ]  current user location from frontend
-    destinations = []  # global list
+        return jsonify("No other user currently searching"), 401
 
     for user_id, user_data in searching_users.items():
         if user_id == current_userid:
@@ -187,7 +188,7 @@ def match():
 
     # print(len(destinations), destinations)
     if len(destinations) == 0:
-        return jsonify("No user near you!"), 400
+        return jsonify("No user near you!"), 402
 
     destinations = sorted(destinations, key=lambda x: x["distance"])
 
@@ -240,12 +241,15 @@ def reject():
 
     current_userid = get_jwt_identity()
     try:
+        other_user_id = matched_users[current_userid]["matched_id"]
         del searching_users[current_userid]
         del matched_users[current_userid]
-        other_user_id = matched_users[current_userid]["matched_id"]
+
+        del searching_users[other_user_id]
         del matched_users[other_user_id]
+
     except:
-        return "Something went wrong. fix it"
+        return "Something went wrong. fix it", 400
 
     return jsonify("Rejected")
 
