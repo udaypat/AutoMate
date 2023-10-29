@@ -22,6 +22,8 @@ function Dashboard() {
     const [isLoggedIn, setLoggedIn] = useState(false);
 
 
+
+
     const mapOptions = {
         zoom: 15,
     };
@@ -82,17 +84,17 @@ function Dashboard() {
         }
     };
 
-    // console.log(apiKey);
+
 
     return (
         <>
-
-            <LoadScript googleMapsApiKey={apiKey} libraries={["places"]}>
+            {userLocation ? <LoadScript googleMapsApiKey={apiKey} libraries={["places"]}>
                 <GoogleMap mapContainerStyle={containerStyle} center={userLocation} zoom={mapOptions.zoom} >
                     {userLocation && <Marker position={userLocation} />}
                     <MyMapWithAutocomplete userLocation={userLocation} />
                 </GoogleMap>
-            </LoadScript>
+            </LoadScript> : <div>Please allow location access for app to work</div>}
+
         </>
     );
 }
