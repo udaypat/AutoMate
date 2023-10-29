@@ -16,6 +16,8 @@ import { useNavigate } from "react-router-dom";
 import { Label } from "@/components/ui/label";
 import { Link } from 'react-router-dom'
 
+const backend_api = import.meta.env.VITE_BACKEND_API
+
 // eslint-disable-next-line react/prop-types
 export function RegisterForm({ className, ...props }) {
     const navigate = useNavigate();
@@ -36,7 +38,7 @@ export function RegisterForm({ className, ...props }) {
         // console.log(formData);
 
         try {
-            const response = await axios.post("https://udayp.live/api/register", formData);
+            const response = await axios.post(`${backend_api}/register`, formData);
 
             // console.log('Response:', response.data);
             navigate("/login");

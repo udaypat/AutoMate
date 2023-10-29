@@ -5,6 +5,10 @@ import Modal from 'react-bootstrap/Modal';
 import axios from 'axios';
 import { useNavigate } from "react-router-dom";
 
+
+const backend_api = import.meta.env.VITE_BACKEND_API
+
+
 function UserModal(props) {
     // const [userData, setUserData] = useState(null);
     const [show, setShow] = useState(true);
@@ -27,7 +31,7 @@ function UserModal(props) {
             };
 
 
-            const response = await axios.post('https://udayp.live/api/search', postData, {
+            const response = await axios.post(`${backend_api}/search`, postData, {
                 headers: {
                     'Authorization': `Bearer ${token}`,
 
@@ -60,7 +64,7 @@ function UserModal(props) {
 
     const getCurrentUserData = async () => {
         try {
-            const response = await axios.get('https://udayp.live/api/id', {
+            const response = await axios.get(`${backend_api}/id`, {
                 headers: {
                     'Authorization': `Bearer ${token}`,
                     'Content-Type': 'application/json',
@@ -85,7 +89,7 @@ function UserModal(props) {
             if (user.user_id === currentUserData.id) {
                 // console.log("hello", user.user_id, user.matched_id)
                 try {
-                    const response = await axios.get(`https://udayp.live/api/id/${user.matched_id}`, {
+                    const response = await axios.get(`${backend_api}/id/${user.matched_id}`, {
                         headers: {
                             'Authorization': `Bearer ${token}`,
                             'Content-Type': 'application/json',
@@ -125,7 +129,7 @@ function UserModal(props) {
             try {
 
 
-                const response = await axios.get('https://udayp.live/api/match', {
+                const response = await axios.get(`${backend_api}/match`, {
                     headers: {
                         'Authorization': `Bearer ${token}`,
                         'Content-Type': 'application/json',
@@ -171,7 +175,7 @@ function UserModal(props) {
 
     const handleAccept = async () => {
         try {
-            const response = await axios.get('https://udayp.live/api/accepted', {
+            const response = await axios.get(`${backend_api}/accepted`, {
                 headers: {
                     'Authorization': `Bearer ${token}`,
                     'Content-Type': 'application/json',
@@ -193,7 +197,7 @@ function UserModal(props) {
     const handleClose = async () => {
 
         try {
-            const response = await axios.get('https://udayp.live/api/reject', {
+            const response = await axios.get(`${backend_api}/reject`, {
                 headers: {
                     'Authorization': `Bearer ${token}`,
                     'Content-Type': 'application/json',
@@ -233,7 +237,7 @@ function UserModal(props) {
             };
 
             // console.log('post link', postData);
-            const response = await axios.post('https://udayp.live/api/route', postData, {
+            const response = await axios.post(`${backend_api}/route`, postData, {
                 headers: {
                     'Authorization': `Bearer ${token}`,
                     'Content-Type': 'application/json',
@@ -261,7 +265,7 @@ function UserModal(props) {
             try {
 
 
-                const response = await axios.get('https://udayp.live/api/consent', {
+                const response = await axios.get(`${backend_api}/consent`, {
                     headers: {
                         'Authorization': `Bearer ${token}`,
                         'Content-Type': 'application/json',

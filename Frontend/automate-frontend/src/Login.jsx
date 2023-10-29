@@ -4,6 +4,8 @@ import { useNavigate } from "react-router-dom";
 import { Link } from 'react-router-dom'
 import axios from "axios"
 
+const backend_api = import.meta.env.VITE_BACKEND_API
+
 export default function Login() {
     const navigate = useNavigate();
 
@@ -19,7 +21,7 @@ export default function Login() {
         event.preventDefault();
 
         try {
-            const response = await axios.post("https://udayp.live/api/login", formData);
+            const response = await axios.post(`${backend_api}/login`, formData);
 
             // console.log('Response:', response.data.access_token);
             localStorage.setItem('user', response.data.access_token)

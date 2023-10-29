@@ -4,6 +4,8 @@ import { Autocomplete } from '@react-google-maps/api';
 import axios from 'axios';
 import UserModal from './components/UserModal';
 
+const backend_api = import.meta.env.VITE_BACKEND_API
+
 function MyMapWithAutocomplete(props) {
     const autocompleteRef = useRef(null);
     const [open, setopen] = useState(false)
@@ -18,7 +20,7 @@ function MyMapWithAutocomplete(props) {
     const onPlaceChanged = async () => {
         if (autocompleteRef.current !== null) {
             try {
-                const response = await axios.post("https://udayp.live/api/destination", autocompleteRef.current.getPlace());
+                const response = await axios.post(`${backend_api}/destination`, autocompleteRef.current.getPlace());
                 // console.log('Response:', response.data);
                 setDestination(response.data)
                 setopen(true)
