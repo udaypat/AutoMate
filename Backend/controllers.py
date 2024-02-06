@@ -23,7 +23,8 @@ salt = bcrypt.gensalt()
 # Access the environment variables
 secret_key = os.getenv("VITE_GOOGLE_MAPS_API_KEY")
 
-gmaps = Client(key=secret_key)
+if secret_key:
+    gmaps = Client(key=secret_key)
 
 
 # Auto generate Schema using models
