@@ -5,7 +5,7 @@ services:
     build:
       context: ./Backend
       dockerfile: Dockerfile-flask
-    image: q-self
+    image: automate
     ports:
       - "5000:5000"
     environment:
@@ -28,10 +28,3 @@ services:
     network_mode: bridge
     env_file:
       - .env
-
-volumes:
-  conf:
-  vhost:
-  html:
-  certs:
-  acme:
