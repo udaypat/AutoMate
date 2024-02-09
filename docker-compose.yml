@@ -17,8 +17,8 @@ services:
       - .env
 
 
-  vue-frontend:
-    image: vue-build
+  react-frontend:
+    image: react-build
     build:
       context: ./Frontend
       dockerfile: Dockerfile-react
